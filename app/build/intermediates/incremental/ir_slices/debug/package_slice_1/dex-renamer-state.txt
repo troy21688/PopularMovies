@@ -1,0 +1,4 @@
+#Thu May 31 18:08:02 CDT 2018
+base.0=/Users/troychuinard/Code/PopularMovies/app/build/intermediates/transforms/dexMerger/debug/1
+path.0=classes.dex
+renamed.0=classes.dex
