@@ -27,16 +27,37 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import popularmovies.troychuinard.com.popularmovies.Model.TheMovieDatabase;
 import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mMovieResults;
+    private RecyclerView.Adapter mMovieResultsAdapter;
 
     private ArrayList<String> mMovieURLS;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mMovieResults = findViewById(R.id.main_recyclerview_image_results);
+        GridLayoutManager glm = new GridLayoutManager(this, 21);
+        glm.setOrientation(LinearLayoutManager.VERTICAL);
+        mMovieResults.setLayoutManager(glm);
+
+        mMovieResultsAdapter = new MyAdapter(mMovieURLS);
+        mMovieResults.setAdapter(mMovieResultsAdapter);
+        mMovieURLS = new ArrayList<>();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,6 +71,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), String.valueOf(i), Toast.LENGTH_LONG).show();
+                mMovieURLS.clear();
+                mMovieResultsAdapter.notifyDataSetChanged();
+                HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                OkHttpClient client = new OkHttpClient
+                        .Builder()
+                        .addInterceptor(interceptor)
+                        .build();
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://image.tmdb.org/t/p/")
+                        .client(client)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+                Call<TheMovieDatabase> call = apiInterface.getimages(query)
             }
 
             @Override
@@ -59,19 +97,6 @@ public class MainActivity extends AppCompatActivity {
         });
         return true;
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mMovieResults = findViewById(R.id.main_recyclerview_image_results);
-        GridLayoutManager glm = new GridLayoutManager(this, 21);
-        glm.setOrientation(LinearLayoutManager.VERTICAL);
-        mMovieResults.setLayoutManager(glm);
-
-        mMovieURLS = new ArrayList<>();
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -111,6 +136,12 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return mMovieURLS.size();
         }
+    }
+
+    public interface ApiInterface{
+        @GET("""""""");
+        Call<TheMovieDatabase> getImages(@Query("text") String query);
+
     }
 
 }

@@ -62,14 +62,24 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="144" selection-end-column="5" />
               <folding>
-                <element signature="e#3037#3038#0" expanded="true" />
-                <element signature="e#3082#3083#0" expanded="true" />
-                <element signature="e#3737#3738#0" expanded="true" />
-                <element signature="e#3785#3786#0" expanded="true" />
+                <element signature="e#4300#4301#0" expanded="true" />
+                <element signature="e#4345#4346#0" expanded="true" />
+                <element signature="e#5000#5001#0" expanded="true" />
+                <element signature="e#5048#5049#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TheMovieDatabase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/Model/TheMovieDatabase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,6 +134,7 @@
       <list>
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -2159,6 +2170,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/movie_poster_image.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/action_bar_spinner.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/Model/TheMovieDatabase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java" />
       </list>
     </option>
@@ -2261,43 +2273,9 @@
               <item name="app" type="cbb8eebc:String" user="app" />
               <item name="src" type="cbb8eebc:String" user="src" />
               <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="res" type="cbb8eebc:String" user="res" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="res" type="cbb8eebc:String" user="res" />
-              <item name="layout" type="cbb8eebc:String" user="layout" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="res" type="cbb8eebc:String" user="res" />
-              <item name="menu" type="cbb8eebc:String" user="menu" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="res" type="cbb8eebc:String" user="res" />
-              <item name="values" type="cbb8eebc:String" user="values" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="PopularMovies" type="cbb8eebc:String" user="PopularMovies" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="PopularMovies" type="cbb8eebc:String" user="PopularMovies" />
-              <item name="PopularMovies" type="cbb8eebc:String" user="PopularMovies" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="popularmovies/troychuinard/com/popularmovies" type="cbb8eebc:String" user="popularmovies/troychuinard/com/popularmovies" />
+              <item name="Model" type="cbb8eebc:String" user="Model" />
             </path>
           </expand>
           <select />
@@ -2554,10 +2532,10 @@
         <state relative-caret-position="1395">
           <caret line="93" column="42" lean-forward="false" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
           <folding>
-            <element signature="e#3037#3038#0" expanded="true" />
-            <element signature="e#3082#3083#0" expanded="true" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3785#3786#0" expanded="true" />
+            <element signature="e#4300#4301#0" expanded="true" />
+            <element signature="e#4345#4346#0" expanded="true" />
+            <element signature="e#5000#5001#0" expanded="true" />
+            <element signature="e#5048#5049#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2649,15 +2627,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/Model/TheMovieDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        <state relative-caret-position="493">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="144" selection-end-column="5" />
           <folding>
-            <element signature="e#3037#3038#0" expanded="true" />
-            <element signature="e#3082#3083#0" expanded="true" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3785#3786#0" expanded="true" />
+            <element signature="e#4300#4301#0" expanded="true" />
+            <element signature="e#4345#4346#0" expanded="true" />
+            <element signature="e#5000#5001#0" expanded="true" />
+            <element signature="e#5048#5049#0" expanded="true" />
           </folding>
         </state>
       </provider>
