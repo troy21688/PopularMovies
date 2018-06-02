@@ -2,6 +2,7 @@ package popularmovies.troychuinard.com.popularmovies;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -70,78 +72,46 @@ public class MainActivity extends AppCompatActivity {
         mMovieResults.setLayoutManager(glm);
 
         mMovieURLS = new ArrayList<>();
-
-
-
-
-//        public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-//
-//
-//            // Provide a reference to the views for each data item
-//            // Complex data items may need more than one view per item, and
-//            // you provide access to all the views for a data item in a view holder
-//            public class ViewHolder extends RecyclerView.ViewHolder {
-//                // each data item is just a string in this case
-//                protected ImageView mResultImage;
-//
-//
-//                public ViewHolder(View v) {
-//                    super(v);
-//                    mResultImage = (ImageView) v.findViewById(R.id.movie_poster_image);
-//
-//
-//                }
-//            }
-//
-//
-//
-//
-//            // Provide a suitable constructor (depends on the kind of dataset)
-//            public MyAdapter(ArrayList<String> mDataSet) {
-//                mMovieURLS = mDataSet;
-//            }
-//
-//
-//            // Create new views (invoked by the layout manager)
-//            @Override
-//            public ViewHolder onCreateViewHolder(ViewGroup parent,
-//                                                 int viewType) {
-//                // create a new view
-//                View v = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.grid_item, parent, false);
-//                // set the view's size, margins, paddings and layout parameters
-//                return new ViewHolder(v);
-//            }
-//
-//            // Replace the contents of a view (invoked by the layout manager)
-//
-//            //The OutOfBoundsException is pointing here
-//            @Override
-//            public void onBindViewHolder(ViewHolder holder, final int position) {
-//                Log.v("ON_BIND", "ON_BINDVIEWHOLDER CALLED");
-//                final String urlForPhoto = mMovieURLS.get(position);
-//                if (mProgressBar.getVisibility() == View.VISIBLE) {
-//                    mProgressBar.setVisibility(View.INVISIBLE);
-//                }
-//                Picasso.with(getApplicationContext())
-//                        .load(urlForPhoto)
-//                        .placeholder(R.drawable.progress_animation)
-//                        .into(holder.mResultImage);
-//
-//
-//                });
-//
-//            }
-//            //test
-//
-//            //test
-//            // Return the size of your dataset (invoked by the layout manager)
-//            @Override
-//            public int getItemCount() {
-//                return mMovieURLS.size();
-//            }
-//        }
-
-
     }
+
+    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            protected ImageView mResultImage;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+                mResultImage = itemView.findViewById(R.id.movie_poster_image);
+            }
+        }
+
+        public MyAdapter(ArrayList<String> mDataset) {
+            mMovieURLS = mDataset;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_poster_image, parent, false);
+            return new ViewHolder(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            final String urlForPhoto = mMovieURLS.get(position);
+            Picasso.with(getApplicationContext())
+                    .load(urlForPhoto)
+                    .into(holder.mResultImage);
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mMovieURLS.size();
+        }
+    }
+
 }
+
