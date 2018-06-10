@@ -1,5 +1,6 @@
 package popularmovies.troychuinard.com.popularmovies.Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Movie {
@@ -8,11 +9,11 @@ public class Movie {
     private int id;
     private boolean video;
     private String title;
-    private long popularity;
+    private float popularity;
     private String poster_path;
     private String original_language;
     private String original_title;
-    private String[] genre_ids;
+    private ArrayList<String> genre_ids;
     private String backdrop_path;
     private boolean adult;
     private String overview;
@@ -34,7 +35,7 @@ public class Movie {
         this.title = title;
     }
 
-    public void setPopularity(long popularity) {
+    public void setPopularity(float popularity) {
         this.popularity = popularity;
     }
 
@@ -50,7 +51,7 @@ public class Movie {
         this.original_title = original_title;
     }
 
-    public void setGenre_ids(String[] genre_ids) {
+    public void setGenre_ids(ArrayList<String> genre_ids) {
         this.genre_ids = genre_ids;
     }
 
@@ -86,7 +87,7 @@ public class Movie {
         return title;
     }
 
-    public long getPopularity() {
+    public float getPopularity() {
         return popularity;
     }
 
@@ -102,7 +103,7 @@ public class Movie {
         return original_title;
     }
 
-    public String[] getGenre_ids() {
+    public ArrayList<String> getGenre_ids() {
         return genre_ids;
     }
 

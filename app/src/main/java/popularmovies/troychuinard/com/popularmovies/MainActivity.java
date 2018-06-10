@@ -29,8 +29,12 @@ import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import popularmovies.troychuinard.com.popularmovies.Model.Movie;
+import popularmovies.troychuinard.com.popularmovies.Model.Movies;
 import popularmovies.troychuinard.com.popularmovies.Model.TheMovieDatabase;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -39,7 +43,9 @@ import retrofit2.http.Query;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mMovieResults;
-    private RecyclerView.Adapter mMovieResultsAdapter;
+    private MyAdapter mMovieResultsAdapter;
+    private String query;
+    private String mBaseURL;
 
     private ArrayList<String> mMovieURLS;
 
@@ -53,10 +59,9 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager glm = new GridLayoutManager(this, 21);
         glm.setOrientation(LinearLayoutManager.VERTICAL);
         mMovieResults.setLayoutManager(glm);
-
+        mMovieURLS = new ArrayList<>();
         mMovieResultsAdapter = new MyAdapter(mMovieURLS);
         mMovieResults.setAdapter(mMovieResultsAdapter);
-        mMovieURLS = new ArrayList<>();
     }
 
     @Override
@@ -71,6 +76,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), String.valueOf(i), Toast.LENGTH_LONG).show();
+                String selection = String.valueOf(i);
+                switch (i){
+                    case 0:
+                        query = "popular";
+                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+                        break;
+                    case 1:
+                        query = "top_rated";
+                        mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
+                        break;
+                    default:
+                        query = "popular";
+                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+                        break;
+                }
                 mMovieURLS.clear();
                 mMovieResultsAdapter.notifyDataSetChanged();
                 HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -81,13 +101,39 @@ public class MainActivity extends AppCompatActivity {
                         .build();
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://image.tmdb.org/t/p/")
+                        .baseUrl(mBaseURL)
                         .client(client)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
-                ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-                Call<TheMovieDatabase> call = apiInterface.getimages(query)
+                final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+                Call<Movies> call = apiInterface.getImages();
+                call.enqueue(new Callback<Movies>() {
+                    @Override
+                    public void onResponse(Call<Movies> call, Response<Movies> response) {
+                        Log.v("RESPONSE", response.body().toString());
+                        String totalPages = String.valueOf(response.body().getTotal_pages());
+                        Log.v("TOTAL", totalPages);
+                        List<Movie> movieResults = response.body().getResults();
+                        for (int i = 0; i < response.body().getTotal_pages(); i++){
+                            for (Movie movie : movieResults) {
+                                if (movie.getPoster_path() != null){
+                                    String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
+//                                    Log.v("MOVIE_URL", photoURL);
+                                    mMovieURLS.add(photoURL);
+                                }
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Movies> call, Throwable t) {
+                        Log.v("FAILURE", t.toString());
+                    }
+                });
             }
 
             @Override
@@ -139,9 +185,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public interface ApiInterface{
-        @GET("""""""");
-        Call<TheMovieDatabase> getImages(@Query("text") String query);
-
+        @GET("?api_key=xxxxxx&language=en-US")
+        Call<Movies> getImages();
     }
 
 }

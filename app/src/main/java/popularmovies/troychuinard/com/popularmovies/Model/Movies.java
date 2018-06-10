@@ -6,8 +6,24 @@ import java.util.List;
 public class Movies {
 
     private int page;
-    private long total_results;
-    private long total_pages;
-    private List<Movie> movie = new ArrayList<Movie>();
+    private int total_results;
+    private int total_pages;
+    private List<Movie> results = new ArrayList<Movie>();
 
+
+    public int getPage() {
+        return page;
+    }
+
+    public int getTotal_results() {
+        return total_results;
+    }
+
+    public int getTotal_pages() {
+        return total_pages;
+    }
+
+    public List<Movie> getResults() {
+        return results;
+    }
 }
