@@ -3,6 +3,7 @@ package popularmovies.troychuinard.com.popularmovies;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.BuildConfig;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter mMovieResultsAdapter;
     private String query;
     private String mBaseURL;
+    private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
 
     private ArrayList<String> mMovieURLS;
 
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mMovieResults = findViewById(R.id.main_recyclerview_image_results);
-        GridLayoutManager glm = new GridLayoutManager(this, 21);
+        GridLayoutManager glm = new GridLayoutManager(this, 3);
         glm.setOrientation(LinearLayoutManager.VERTICAL);
         mMovieResults.setLayoutManager(glm);
         mMovieURLS = new ArrayList<>();
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), String.valueOf(i), Toast.LENGTH_LONG).show();
                 String selection = String.valueOf(i);
-                switch (i){
+                switch (i) {
                     case 0:
                         query = "popular";
                         mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
@@ -108,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
                 final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
-                Call<Movies> call = apiInterface.getImages();
+                Log.v("API", API_KEY);
+                Call<Movies> call = apiInterface.getImages(API_KEY);
                 call.enqueue(new Callback<Movies>() {
                     @Override
                     public void onResponse(Call<Movies> call, Response<Movies> response) {
@@ -116,17 +119,14 @@ public class MainActivity extends AppCompatActivity {
                         String totalPages = String.valueOf(response.body().getTotal_pages());
                         Log.v("TOTAL", totalPages);
                         List<Movie> movieResults = response.body().getResults();
-                        for (int i = 0; i < response.body().getTotal_pages(); i++){
-                            for (Movie movie : movieResults) {
-                                if (movie.getPoster_path() != null){
-                                    String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
-//                                    Log.v("MOVIE_URL", photoURL);
-                                    mMovieURLS.add(photoURL);
-                                }
+                        for (Movie movie : movieResults) {
+                            if (movie.getPoster_path() != null) {
+                                String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
+//                                Log.v("MOVIE_URL", photoURL);
+                                mMovieURLS.add(photoURL);
                             }
+                            mMovieResultsAdapter.swapDataSet(mMovieURLS);
                         }
-
-
                     }
 
                     @Override
@@ -182,11 +182,18 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return mMovieURLS.size();
         }
+
+        public void swapDataSet(ArrayList<String> dataset) {
+            mMovieURLS = dataset;
+            notifyDataSetChanged();
+
+        }
+
     }
 
-    public interface ApiInterface{
-        @GET("?api_key=xxxxxx&language=en-US")
-        Call<Movies> getImages();
+    public interface ApiInterface {
+        @GET("?language=en-US")
+        Call<Movies> getImages(@Query("api_key") String api_key);
     }
 
 }

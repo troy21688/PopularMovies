@@ -10,4 +10,6 @@ public final class BuildConfig {
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
+  // Fields from build type: debug
+  public static final String TMD_API_KEY = "09b0a9a9d5d9ddee2b3bc69e78b02457";
 }
