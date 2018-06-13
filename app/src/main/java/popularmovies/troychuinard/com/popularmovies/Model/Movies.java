@@ -8,7 +8,7 @@ public class Movies {
     private int page;
     private int total_results;
     private int total_pages;
-    private List<Movie> results = new ArrayList<Movie>();
+    private ArrayList<Movie> results = new ArrayList<Movie>();
 
 
     public int getPage() {

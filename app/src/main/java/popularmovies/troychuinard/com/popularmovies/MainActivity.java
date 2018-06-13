@@ -1,7 +1,10 @@
 package popularmovies.troychuinard.com.popularmovies;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.constraint.BuildConfig;
 import android.support.v4.view.MenuItemCompat;
@@ -41,6 +44,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+import static android.provider.LiveFolders.INTENT;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mMovieResults;
@@ -50,11 +55,18 @@ public class MainActivity extends AppCompatActivity {
     private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
 
     private ArrayList<String> mMovieURLS;
+    private ArrayList<Movie> mMovies;
+    private List<Movie> mMovieResultsList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (isOnline()){
+            setContentView(R.layout.activity_main);
+        } else{
+            setContentView(R.layout.activity_no_internet);
+        }
         setContentView(R.layout.activity_main);
 
         mMovieResults = findViewById(R.id.main_recyclerview_image_results);
@@ -62,7 +74,10 @@ public class MainActivity extends AppCompatActivity {
         glm.setOrientation(LinearLayoutManager.VERTICAL);
         mMovieResults.setLayoutManager(glm);
         mMovieURLS = new ArrayList<>();
-        mMovieResultsAdapter = new MyAdapter(mMovieURLS);
+        mMovies = new ArrayList<>();
+        mMovieResultsList = new ArrayList<>();
+
+        mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
         mMovieResults.setAdapter(mMovieResultsAdapter);
     }
 
@@ -118,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.v("RESPONSE", response.body().toString());
                         String totalPages = String.valueOf(response.body().getTotal_pages());
                         Log.v("TOTAL", totalPages);
-                        List<Movie> movieResults = response.body().getResults();
-                        for (Movie movie : movieResults) {
+                        mMovieResultsList = response.body().getResults();
+                        for (Movie movie : mMovieResultsList) {
                             if (movie.getPoster_path() != null) {
                                 String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
 //                                Log.v("MOVIE_URL", photoURL);
@@ -158,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public MyAdapter(ArrayList<String> mDataset) {
-            mMovieURLS = mDataset;
+        public MyAdapter(List<Movie> mDataset) {
+            mMovieResultsList = mDataset;
         }
 
         @NonNull
@@ -170,17 +185,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            final String urlForPhoto = mMovieURLS.get(position);
+        public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+            final String urlForPhoto = "http://image.tmdb.org/t/p/w185" + mMovieResultsList.get(position).getPoster_path();
             Picasso.with(getApplicationContext())
                     .load(urlForPhoto)
                     .into(holder.mResultImage);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getApplicationContext(), "CLICKED", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), IndividualMovieActivity.class);
+                    i.putExtra("Movie", mMovieResultsList.get(position));
+                    startActivity(i);
+                }
+            });
 
         }
 
         @Override
         public int getItemCount() {
-            return mMovieURLS.size();
+            return mMovieResultsList.size();
         }
 
         public void swapDataSet(ArrayList<String> dataset) {
@@ -189,11 +214,20 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
+
     }
 
     public interface ApiInterface {
         @GET("?language=en-US")
         Call<Movies> getImages(@Query("api_key") String api_key);
+    }
+
+    private boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }
