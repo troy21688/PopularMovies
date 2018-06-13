@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Popular Movies</string>
     <string name="filter">Filter</string>
-    <string name="_please_connect_internet">No Internet connection found, please conncet to the Internet.</string>
+    <string name="_please_connect_internet">Please conncet to the Internet.</string>
     <string-array name="spiner_list_item_array">
         <item>Popular</item>
         <item>Top Rated</item>

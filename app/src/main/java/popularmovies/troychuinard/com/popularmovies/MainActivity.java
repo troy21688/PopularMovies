@@ -64,21 +64,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (isOnline()){
             setContentView(R.layout.activity_main);
+
+            mMovieResults = findViewById(R.id.main_recyclerview_image_results);
+            GridLayoutManager glm = new GridLayoutManager(this, 3);
+            glm.setOrientation(LinearLayoutManager.VERTICAL);
+            mMovieResults.setLayoutManager(glm);
+            mMovieURLS = new ArrayList<>();
+            mMovies = new ArrayList<>();
+            mMovieResultsList = new ArrayList<>();
+
+            mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
+            mMovieResults.setAdapter(mMovieResultsAdapter);
         } else{
             setContentView(R.layout.activity_no_internet);
+            return;
         }
-        setContentView(R.layout.activity_main);
 
-        mMovieResults = findViewById(R.id.main_recyclerview_image_results);
-        GridLayoutManager glm = new GridLayoutManager(this, 3);
-        glm.setOrientation(LinearLayoutManager.VERTICAL);
-        mMovieResults.setLayoutManager(glm);
-        mMovieURLS = new ArrayList<>();
-        mMovies = new ArrayList<>();
-        mMovieResultsList = new ArrayList<>();
-
-        mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
-        mMovieResults.setAdapter(mMovieResultsAdapter);
     }
 
     @Override
@@ -86,78 +87,81 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.action_bar_spinner, menu);
         MenuItem item = menu.findItem(R.id.spinner);
         Spinner spinner = (Spinner) item.getActionView();
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spiner_list_item_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), String.valueOf(i), Toast.LENGTH_LONG).show();
-                String selection = String.valueOf(i);
-                switch (i) {
-                    case 0:
-                        query = "popular";
-                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
-                        break;
-                    case 1:
-                        query = "top_rated";
-                        mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
-                        break;
-                    default:
-                        query = "popular";
-                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
-                        break;
-                }
-                mMovieURLS.clear();
-                mMovieResultsAdapter.notifyDataSetChanged();
-                HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-                interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-                OkHttpClient client = new OkHttpClient
-                        .Builder()
-                        .addInterceptor(interceptor)
-                        .build();
+        if (isOnline()){
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spiner_list_item_array, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Toast.makeText(getApplicationContext(), String.valueOf(i), Toast.LENGTH_LONG).show();
+                    String selection = String.valueOf(i);
+                    switch (i) {
+                        case 0:
+                            query = "popular";
+                            mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+                            break;
+                        case 1:
+                            query = "top_rated";
+                            mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
+                            break;
+                        default:
+                            query = "popular";
+                            mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+                            break;
+                    }
+                    mMovieURLS.clear();
+                    mMovieResultsAdapter.notifyDataSetChanged();
+                    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                    OkHttpClient client = new OkHttpClient
+                            .Builder()
+                            .addInterceptor(interceptor)
+                            .build();
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(mBaseURL)
-                        .client(client)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(mBaseURL)
+                            .client(client)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
 
-                final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+                    final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
-                Log.v("API", API_KEY);
-                Call<Movies> call = apiInterface.getImages(API_KEY);
-                call.enqueue(new Callback<Movies>() {
-                    @Override
-                    public void onResponse(Call<Movies> call, Response<Movies> response) {
-                        Log.v("RESPONSE", response.body().toString());
-                        String totalPages = String.valueOf(response.body().getTotal_pages());
-                        Log.v("TOTAL", totalPages);
-                        mMovieResultsList = response.body().getResults();
-                        for (Movie movie : mMovieResultsList) {
-                            if (movie.getPoster_path() != null) {
-                                String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
+                    Log.v("API", API_KEY);
+                    Call<Movies> call = apiInterface.getImages(API_KEY);
+                    call.enqueue(new Callback<Movies>() {
+                        @Override
+                        public void onResponse(Call<Movies> call, Response<Movies> response) {
+                            Log.v("RESPONSE", response.body().toString());
+                            String totalPages = String.valueOf(response.body().getTotal_pages());
+                            Log.v("TOTAL", totalPages);
+                            mMovieResultsList = response.body().getResults();
+                            for (Movie movie : mMovieResultsList) {
+                                if (movie.getPoster_path() != null) {
+                                    String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
 //                                Log.v("MOVIE_URL", photoURL);
-                                mMovieURLS.add(photoURL);
+                                    mMovieURLS.add(photoURL);
+                                }
+                                mMovieResultsAdapter.swapDataSet(mMovieURLS);
                             }
-                            mMovieResultsAdapter.swapDataSet(mMovieURLS);
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Movies> call, Throwable t) {
-                        Log.v("FAILURE", t.toString());
-                    }
-                });
-            }
+                        @Override
+                        public void onFailure(Call<Movies> call, Throwable t) {
+                            Log.v("FAILURE", t.toString());
+                        }
+                    });
+                }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
-        return true;
-
+                }
+            });
+            return true;
+        } else {
+            return true;
+        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<FrameLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:text="@string/_please_connect_internet"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="none"
+        android:maxLines="100"
+        android:padding="50dp"
+        android:layout_gravity="center"
+        android:scrollHorizontally="false"
+        android:text="@string/_please_connect_internet" />
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>
