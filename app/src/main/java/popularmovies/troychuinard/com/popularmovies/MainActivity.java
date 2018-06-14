@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.spinner);
         Spinner spinner = (Spinner) item.getActionView();
         if (isOnline()){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spiner_list_item_array, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spiner_list_item_array, R.layout.custom_spinner);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     mMovieURLS.clear();
                     mMovieResultsAdapter.notifyDataSetChanged();
                     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-                    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                    interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
                     OkHttpClient client = new OkHttpClient
                             .Builder()
                             .addInterceptor(interceptor)
