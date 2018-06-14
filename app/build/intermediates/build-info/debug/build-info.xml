@@ -7,25 +7,25 @@
     format="10"
     ir-eligibility="COMPATIBLE"
     plugin-version="3.1.2"
-    timestamp="1528940430742"
+    timestamp="1528942258295"
     token="-5011088237312239508"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="484" />
+        duration="367" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="145" />
+        duration="102" />
     <task
         name="verifier"
-        duration="83" />
+        duration="27" />
 
     <artifact
-        location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
 
     <build
@@ -102,19 +102,19 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1528940300331"
+        timestamp="1528942192238"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1528940430742"
+        timestamp="1528942258295"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
     </build>
 

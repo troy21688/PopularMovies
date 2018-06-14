@@ -55,6 +55,7 @@ public class Movie implements Parcelable {
         backdrop_path = in.readString();
         adult = in.readByte() != 0;
         overview = in.readString();
+        release_date = new Date(in.readLong());
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {

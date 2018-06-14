@@ -37,7 +37,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
                 .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
                 .into(mMoviePoster);
 
-//        mMovieReleaseDate.setText((CharSequence) movie.getRelease_date());
+        mMovieReleaseDate.setText(movie.getRelease_date().toString());
 
     }
 }
