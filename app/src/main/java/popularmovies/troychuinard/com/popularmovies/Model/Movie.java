@@ -20,13 +20,13 @@ public class Movie implements Parcelable {
     private String backdrop_path;
     private boolean adult;
     private String overview;
-    private Date release_date;
+    private String release_date;
 
     public Movie(){
 
     }
 
-    public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, ArrayList<String> genre_ids, String backdrop_path, boolean adult, String overview, Date release_date) {
+    public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, ArrayList<String> genre_ids, String backdrop_path, boolean adult, String overview, String release_date) {
         this.vote_count = vote_count;
         this.id = id;
         this.video = video;
@@ -55,7 +55,7 @@ public class Movie implements Parcelable {
         backdrop_path = in.readString();
         adult = in.readByte() != 0;
         overview = in.readString();
-        release_date = new Date(in.readLong());
+        release_date = in.readString();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -118,7 +118,7 @@ public class Movie implements Parcelable {
         this.overview = overview;
     }
 
-    public void setRelease_date(Date release_date) {
+    public void setRelease_date(String release_date) {
         this.release_date = release_date;
     }
 
@@ -170,7 +170,7 @@ public class Movie implements Parcelable {
         return overview;
     }
 
-    public Date getRelease_date() {
+    public String getRelease_date() {
         return release_date;
     }
 
@@ -193,7 +193,7 @@ public class Movie implements Parcelable {
         parcel.writeString(backdrop_path);
         parcel.writeByte((byte) (adult ? 1:0));
         parcel.writeString(overview);
-        parcel.writeLong(release_date.getTime());
+        parcel.writeString(release_date);
 
 
     }

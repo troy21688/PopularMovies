@@ -94,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    Toast.makeText(getApplicationContext(), String.valueOf(i), Toast.LENGTH_LONG).show();
-                    String selection = String.valueOf(i);
                     switch (i) {
                         case 0:
                             query = "popular";
@@ -198,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(), "CLICKED", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getApplicationContext(), IndividualMovieActivity.class);
                     i.putExtra("Movie", mMovieResultsList.get(position));
                     startActivity(i);
