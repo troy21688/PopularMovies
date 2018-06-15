@@ -48,7 +48,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
         Picasso.with(getApplicationContext())
                 .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
                 .into(mMoviePoster);
-        
+
         mMovieReleaseDate.setText(movie.getRelease_date());
         mRatingBar.setRating(movie.getVote_count());
         mSynopsis.setText(movie.getOverview());

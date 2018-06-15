@@ -33,8 +33,6 @@
         <ImageView
             android:layout_gravity="center_horizontal"
             android:id="@+id/movie_details_movie_poster_image"
-            android:layout_marginTop="@dimen/movie_details_image_margin_left"
-            android:layout_marginLeft="@dimen/movie_details_image_margin_left"
             android:layout_width="@dimen/movie_details_image_width"
             android:layout_height="@dimen/movie_details_image_height" />
         <TextView

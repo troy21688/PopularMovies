@@ -6,7 +6,7 @@
     density="xhdpi"
     format="10"
     plugin-version="3.1.2"
-    timestamp="1529091028783"
+    timestamp="1529091248832"
     token="-5011088237312239508"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -107,7 +107,7 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1529090860895"
+        timestamp="1529091176558"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
@@ -115,7 +115,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1529091028783"
+        timestamp="1529091248832"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
