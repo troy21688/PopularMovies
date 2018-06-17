@@ -4,20 +4,20 @@
             "outputFile": "/Users/troychuinard/Code/PopularMovies/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rHK/values-zh-rHK.xml",
             "map": [
                 {
-                    "source": "/Users/troychuinard/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/76b5a22769805f409d1bfb3000b98643/res/values-zh-rHK/values-zh-rHK.xml",
+                    "source": "/Users/troychuinard/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8ba418110e84605263ffbde21c3409f2/res/values-zh-rHK/values-zh-rHK.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "endColumns": "101",
+                        "endOffsets": "152"
                     },
                     "to": {
                         "startLines": "20",
                         "startColumns": "4",
                         "startOffsets": "1810",
-                        "endColumns": "100",
-                        "endOffsets": "1906"
+                        "endColumns": "101",
+                        "endOffsets": "1907"
                     }
                 },
                 {

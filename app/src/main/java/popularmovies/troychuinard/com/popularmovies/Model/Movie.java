@@ -21,12 +21,13 @@ public class Movie implements Parcelable {
     private boolean adult;
     private String overview;
     private String release_date;
+    private Number vote_average;
 
-    public Movie(){
+    public Movie() {
 
     }
 
-    public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, ArrayList<String> genre_ids, String backdrop_path, boolean adult, String overview, String release_date) {
+    public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, ArrayList<String> genre_ids, String backdrop_path, boolean adult, String overview, String release_date, Number vote_average) {
         this.vote_count = vote_count;
         this.id = id;
         this.video = video;
@@ -40,6 +41,7 @@ public class Movie implements Parcelable {
         this.adult = adult;
         this.overview = overview;
         this.release_date = release_date;
+        this.vote_average = vote_average;
     }
 
     protected Movie(Parcel in) {
@@ -56,6 +58,7 @@ public class Movie implements Parcelable {
         adult = in.readByte() != 0;
         overview = in.readString();
         release_date = in.readString();
+        vote_average = in.readInt();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -174,6 +177,10 @@ public class Movie implements Parcelable {
         return release_date;
     }
 
+    public Number getVote_average() {
+        return vote_average;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -183,7 +190,7 @@ public class Movie implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(vote_count);
         parcel.writeInt(id);
-        parcel.writeByte((byte) (video ? 1:0));
+        parcel.writeByte((byte) (video ? 1 : 0));
         parcel.writeString(title);
         parcel.writeFloat(popularity);
         parcel.writeString(poster_path);
@@ -191,10 +198,9 @@ public class Movie implements Parcelable {
         parcel.writeString(original_title);
         parcel.writeStringList(genre_ids);
         parcel.writeString(backdrop_path);
-        parcel.writeByte((byte) (adult ? 1:0));
+        parcel.writeByte((byte) (adult ? 1 : 0));
         parcel.writeString(overview);
         parcel.writeString(release_date);
-
-
+        parcel.writeInt(vote_average.intValue());
     }
 }

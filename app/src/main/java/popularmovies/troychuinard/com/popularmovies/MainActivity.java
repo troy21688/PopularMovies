@@ -189,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
             final String urlForPhoto = "http://image.tmdb.org/t/p/w185" + mMovieResultsList.get(position).getPoster_path();
-            Picasso.with(getApplicationContext())
+
+            Picasso.get()
                     .load(urlForPhoto)
                     .into(holder.mResultImage);
 

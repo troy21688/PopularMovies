@@ -45,12 +45,13 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mSynopsis = findViewById(R.id.movie_details_synopsis);
 
         mMovieTitle.setText(title);
-        Picasso.with(getApplicationContext())
+        Picasso.get()
                 .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
                 .into(mMoviePoster);
 
+        float vote_average = movie.getVote_average().floatValue();
         mMovieReleaseDate.setText(movie.getRelease_date());
-        mRatingBar.setRating(movie.getVote_count());
+        mRatingBar.setRating(vote_average);
         mSynopsis.setText(movie.getOverview());
 
     }
