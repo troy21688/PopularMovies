@@ -6,7 +6,7 @@
     density="560dpi"
     format="10"
     plugin-version="3.1.2"
-    timestamp="1529262576010"
+    timestamp="1529364852623"
     token="-5011088237312239508"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -29,28 +29,25 @@
 
     <build
         build-mode="FULL"
-        timestamp="1529258796858"
+        timestamp="1529364349819"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
@@ -59,59 +56,21 @@
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1529259362561"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1529260535986"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1529261040325"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1529262576010"
+        timestamp="1529364852623"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
