@@ -532,6 +532,10 @@
         "source": "/Users/troychuinard/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b324e3187c06962535a6fd640f1ba07f/res/drawable-xxhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/troychuinard/Code/PopularMovies/app/build/intermediates/res/merged/debug/drawable_play.png.flat",
+        "source": "/Users/troychuinard/Code/PopularMovies/app/src/main/res/drawable/play.png"
+    },
+    {
         "merged": "/Users/troychuinard/Code/PopularMovies/app/build/intermediates/res/merged/debug/drawable_notification_icon_background.xml.flat",
         "source": "/Users/troychuinard/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8ba418110e84605263ffbde21c3409f2/res/drawable/notification_icon_background.xml"
     },
