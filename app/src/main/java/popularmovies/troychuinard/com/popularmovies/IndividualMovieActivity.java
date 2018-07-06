@@ -1,24 +1,27 @@
 package popularmovies.troychuinard.com.popularmovies;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import popularmovies.troychuinard.com.popularmovies.Model.Movie;
-import popularmovies.troychuinard.com.popularmovies.Model.Movies;
+import popularmovies.troychuinard.com.popularmovies.Model.Video;
 import popularmovies.troychuinard.com.popularmovies.Model.Videos;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +40,10 @@ public class IndividualMovieActivity extends AppCompatActivity {
     private RatingBar mRatingBar;
     private TextView mSynopsis;
     private String mBaseURL;
+    private RecyclerView mVideoRecyclerView;
+    private MyAdapter mRecyclerAdapter;
+
+    private List<Video> mVideoResults;
 
     private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
 
@@ -47,6 +54,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual_movie);
+
 
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra("Movie");
@@ -63,6 +71,9 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMovieReleaseDate = findViewById(R.id.movie_details_release_date);
         mRatingBar = findViewById(R.id.movie_details_rating_bar);
         mSynopsis = findViewById(R.id.movie_details_synopsis);
+        mVideoRecyclerView = findViewById(R.id.main_recyclerview_video_results);
+        mVideoResults = new ArrayList<>();
+
 
         mMovieTitle.setText(title);
         Picasso.get()
@@ -74,6 +85,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMovieReleaseDate.setText(movie.getRelease_date());
         mRatingBar.setRating(vote_average);
         mSynopsis.setText(movie.getOverview());
+
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
@@ -88,34 +100,65 @@ public class IndividualMovieActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-
-
-        mPlayButton.setOnClickListener(new View.OnClickListener() {
+        Call<Videos> call = apiInterface.getVideos(API_KEY);
+        call.enqueue(new Callback<Videos>() {
             @Override
-            public void onClick(View view) {
-                Call<Videos> call = apiInterface.getVideos(API_KEY);
-                call.enqueue(new Callback<Videos>() {
-                    @Override
-                    public void onResponse(Call<Videos> call, Response<Videos> response) {
+            public void onResponse(Call<Videos> call, Response<Videos> response) {
+                mVideoResults = response.body().getResults();
+                Log.v("VIDEO_RESULTS", String.valueOf(mVideoResults.size()));
+            }
 
-                    }
-
-                    @Override
-                    public void onFailure(Call<Videos> call, Throwable t) {
-
-                    }
-                });
-
-
-
-
+            @Override
+            public void onFailure(Call<Videos> call, Throwable t) {
 
             }
         });
 
+        mRecyclerAdapter = new MyAdapter(mVideoResults);
+        mVideoRecyclerView.setAdapter(mRecyclerAdapter);
+
+    }
+
+    public class MyAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyAdapter.ViewHolder> {
+
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            protected TextView mTextView;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+                mTextView = itemView.findViewById(R.id.trailer_text);
+            }
+        }
+
+        public MyAdapter(List<Video> mDataset) {
+            mVideoResults = mDataset;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.play_button, parent, false);
+            return new ViewHolder(v);
+        }
+
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.mTextView.setText("Trailer " + String.valueOf(position) );
 
         }
+
+
+        @Override
+        public int getItemCount() {
+            return mVideoResults.size();
+        }
+
+    }
 
 
     public interface ApiInterface {
