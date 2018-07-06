@@ -53,7 +53,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
         String title = movie.getOriginal_title();
         int movie_id = movie.getId();
         final String movie_id_string = String.valueOf(movie_id);
-        mBaseURL = "https://api.themoviedb.org/3/movie/" + movie_id_string + "/videos/";
+        mBaseURL = "https://api.themoviedb.org/3/movie/" + movie_id_string + "/";
         Log.v("POSTER_PATH", movie.getPoster_path());
         Log.v("RELEASE", movie.getRelease_date().toString());
 
@@ -119,7 +119,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
 
     public interface ApiInterface {
-        @GET("?language=en-US")
+        @GET("videos?language=en-US")
         Call<Videos> getVideos(@Query("api_key") String api_key);
     }
 }
