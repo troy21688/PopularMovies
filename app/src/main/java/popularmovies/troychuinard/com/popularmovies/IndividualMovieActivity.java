@@ -1,9 +1,12 @@
 package popularmovies.troychuinard.com.popularmovies;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,6 +45,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
     private String mBaseURL;
     private RecyclerView mVideoRecyclerView;
     private MyAdapter mRecyclerAdapter;
+    private String mYouTubeID;
 
     private List<Video> mVideoResults;
 
@@ -71,20 +75,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMovieReleaseDate = findViewById(R.id.movie_details_release_date);
         mRatingBar = findViewById(R.id.movie_details_rating_bar);
         mSynopsis = findViewById(R.id.movie_details_synopsis);
-        mVideoRecyclerView = findViewById(R.id.main_recyclerview_video_results);
         mVideoResults = new ArrayList<>();
-
-
-        mMovieTitle.setText(title);
-        Picasso.get()
-                .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
-                .into(mMoviePoster);
-
-
-        float vote_average = movie.getVote_average().floatValue();
-        mMovieReleaseDate.setText(movie.getRelease_date());
-        mRatingBar.setRating(vote_average);
-        mSynopsis.setText(movie.getOverview());
 
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -108,6 +99,13 @@ public class IndividualMovieActivity extends AppCompatActivity {
             public void onResponse(Call<Videos> call, Response<Videos> response) {
                 mVideoResults = response.body().getResults();
                 Log.v("VIDEO_RESULTS", String.valueOf(mVideoResults.size()));
+                Log.v("SUCCESSFUL", String.valueOf(response.isSuccessful()));
+                mVideoRecyclerView = findViewById(R.id.main_recyclerview_video_results);
+                LinearLayoutManager lm = new LinearLayoutManager(getApplicationContext());
+                lm.setOrientation(LinearLayoutManager.VERTICAL);
+                mVideoRecyclerView.setLayoutManager(lm);
+                mRecyclerAdapter = new MyAdapter(mVideoResults);
+                mVideoRecyclerView.setAdapter(mRecyclerAdapter);
             }
 
             @Override
@@ -116,8 +114,24 @@ public class IndividualMovieActivity extends AppCompatActivity {
             }
         });
 
-        mRecyclerAdapter = new MyAdapter(mVideoResults);
-        mVideoRecyclerView.setAdapter(mRecyclerAdapter);
+
+
+
+        mMovieTitle.setText(title);
+        Picasso.get()
+                .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
+                .into(mMoviePoster);
+
+
+        float vote_average = movie.getVote_average().floatValue();
+        mMovieReleaseDate.setText(movie.getRelease_date());
+        mRatingBar.setRating(vote_average);
+        mSynopsis.setText(movie.getOverview());
+
+
+
+
+
 
     }
 
@@ -141,14 +155,31 @@ public class IndividualMovieActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.play_button, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.trailer_view, parent, false);
             return new ViewHolder(v);
         }
 
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.mTextView.setText("Trailer " + String.valueOf(position) );
+            holder.mTextView.setText("Trailer " + String.valueOf(position +1) );
+            final String youTubeID = mVideoResults.get(position).getKey();
+            Log.v("YOUTUBE_ID", youTubeID);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + youTubeID));
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://www.youtube.com/watch?v=" + youTubeID));
+
+                    //TODO: Why is there a try-catch? What is best practice for a Try-Catch?
+                    try {
+                        getApplicationContext().startActivity(appIntent);
+                    } catch (ActivityNotFoundException ex) {
+                        getApplicationContext().startActivity(webIntent);
+                    }
+                }
+            });
 
         }
 
