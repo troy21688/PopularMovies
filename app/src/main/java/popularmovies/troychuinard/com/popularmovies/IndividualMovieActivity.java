@@ -12,6 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -73,6 +77,17 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMovieTitle = findViewById(R.id.movie_name);
         mMoviePoster = findViewById(R.id.movie_details_movie_poster_image);
         mFavoriteButton = findViewById(R.id.button_favorite);
+        final ScaleAnimation scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
+        scaleAnimation.setDuration(500);
+        BounceInterpolator bounceInterpolator = new BounceInterpolator();
+        scaleAnimation.setInterpolator(bounceInterpolator);
+        mFavoriteButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                compoundButton.startAnimation(scaleAnimation);
+            }
+        });
+
         mMovieReleaseDate = findViewById(R.id.movie_details_release_date);
         mRatingBar = findViewById(R.id.movie_details_rating_bar);
         mSynopsis = findViewById(R.id.movie_details_synopsis);
