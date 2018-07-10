@@ -55,21 +55,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/movie_details_play_button"
-                    android:layout_width="44dp"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/play"
-                    app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/movie_details_movie_poster_image"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <ToggleButton
+                    android:id="@+id/button_favorite"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:background="@drawable/button_favorite"
+                    android:checked="false"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""/>
 
                 <TextView
                     android:id="@+id/movie_details_release_date"
@@ -146,7 +140,7 @@
             android:id="@+id/main_recyclerview_video_results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
     </LinearLayout>
 
 </ScrollView>

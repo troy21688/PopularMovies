@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +39,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
     private TextView mMovieTitle;
     private ImageView mMoviePoster;
-    private ImageView mPlayButton;
+    private ToggleButton mFavoriteButton;
     private TextView mMovieReleaseDate;
     private RatingBar mRatingBar;
     private TextView mSynopsis;
@@ -71,7 +72,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
         mMovieTitle = findViewById(R.id.movie_name);
         mMoviePoster = findViewById(R.id.movie_details_movie_poster_image);
-        mPlayButton = findViewById(R.id.movie_details_play_button);
+        mFavoriteButton = findViewById(R.id.button_favorite);
         mMovieReleaseDate = findViewById(R.id.movie_details_release_date);
         mRatingBar = findViewById(R.id.movie_details_rating_bar);
         mSynopsis = findViewById(R.id.movie_details_synopsis);
@@ -97,15 +98,18 @@ public class IndividualMovieActivity extends AppCompatActivity {
         call.enqueue(new Callback<Videos>() {
             @Override
             public void onResponse(Call<Videos> call, Response<Videos> response) {
+
                 mVideoResults = response.body().getResults();
-                Log.v("VIDEO_RESULTS", String.valueOf(mVideoResults.size()));
-                Log.v("SUCCESSFUL", String.valueOf(response.isSuccessful()));
-                mVideoRecyclerView = findViewById(R.id.main_recyclerview_video_results);
-                LinearLayoutManager lm = new LinearLayoutManager(getApplicationContext());
-                lm.setOrientation(LinearLayoutManager.VERTICAL);
-                mVideoRecyclerView.setLayoutManager(lm);
-                mRecyclerAdapter = new MyAdapter(mVideoResults);
-                mVideoRecyclerView.setAdapter(mRecyclerAdapter);
+                if (mVideoResults != null && mVideoResults.size() != 0) {
+                    Log.v("VIDEO_RESULTS", String.valueOf(mVideoResults.size()));
+                    Log.v("SUCCESSFUL", String.valueOf(response.isSuccessful()));
+                    mVideoRecyclerView = findViewById(R.id.main_recyclerview_video_results);
+                    LinearLayoutManager lm = new LinearLayoutManager(getApplicationContext());
+                    lm.setOrientation(LinearLayoutManager.VERTICAL);
+                    mVideoRecyclerView.setLayoutManager(lm);
+                    mRecyclerAdapter = new MyAdapter(mVideoResults);
+                    mVideoRecyclerView.setAdapter(mRecyclerAdapter);
+                }
             }
 
             @Override
@@ -127,12 +131,6 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMovieReleaseDate.setText(movie.getRelease_date());
         mRatingBar.setRating(vote_average);
         mSynopsis.setText(movie.getOverview());
-
-
-
-
-
-
     }
 
     public class MyAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyAdapter.ViewHolder> {
