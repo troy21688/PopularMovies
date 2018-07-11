@@ -1,14 +1,19 @@
 package popularmovies.troychuinard.com.popularmovies.Model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+@Entity
 public class Movie implements Parcelable {
 
     private int vote_count;
+    @PrimaryKey
     private int id;
     private boolean video;
     private String title;
@@ -23,8 +28,8 @@ public class Movie implements Parcelable {
     private String release_date;
     private Number vote_average;
 
+    @Ignore
     public Movie() {
-
     }
 
     public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, ArrayList<String> genre_ids, String backdrop_path, boolean adult, String overview, String release_date, Number vote_average) {

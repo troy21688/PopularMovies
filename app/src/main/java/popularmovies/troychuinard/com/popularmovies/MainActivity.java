@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Movie> mMovies;
     private List<Movie> mMovieResultsList;
 
+    private AppDatabase mDb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
             mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
             mMovieResults.setAdapter(mMovieResultsAdapter);
+            mDb = AppDatabase.getInstance(getApplicationContext());
+
         } else{
             setContentView(R.layout.activity_no_internet);
             return;

@@ -29,6 +29,8 @@ import java.util.List;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import popularmovies.troychuinard.com.popularmovies.Model.Movie;
+import popularmovies.troychuinard.com.popularmovies.Model.Review;
+import popularmovies.troychuinard.com.popularmovies.Model.Reviews;
 import popularmovies.troychuinard.com.popularmovies.Model.Video;
 import popularmovies.troychuinard.com.popularmovies.Model.Videos;
 import retrofit2.Call;
@@ -51,8 +53,11 @@ public class IndividualMovieActivity extends AppCompatActivity {
     private RecyclerView mVideoRecyclerView;
     private MyAdapter mRecyclerAdapter;
     private String mYouTubeID;
+    private ApiInterface mAPIInterface;
+    private AppDatabase mDb;
 
     private List<Video> mVideoResults;
+    private ArrayList<Review> mReviewResults;
 
     private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
 
@@ -74,6 +79,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
         Log.v("POSTER_PATH", movie.getPoster_path());
         Log.v("RELEASE", movie.getRelease_date().toString());
 
+        mDb = AppDatabase.getInstance(getApplicationContext());
         mMovieTitle = findViewById(R.id.movie_name);
         mMoviePoster = findViewById(R.id.movie_details_movie_poster_image);
         mFavoriteButton = findViewById(R.id.button_favorite);
@@ -85,6 +91,9 @@ public class IndividualMovieActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 compoundButton.startAnimation(scaleAnimation);
+                if (b){
+
+                }
             }
         });
 
@@ -93,22 +102,25 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mSynopsis = findViewById(R.id.movie_details_synopsis);
         mVideoResults = new ArrayList<>();
 
-
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        OkHttpClient client = new OkHttpClient
-                .Builder()
-                .addInterceptor(interceptor)
-                .build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(mBaseURL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        ApiInterface initialInterface = initializeRetrofitItems();
+        callToVideos(initialInterface);
+        callToReviews(initializeRetrofitItems());
 
 
-        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        mMovieTitle.setText(title);
+        Picasso.get()
+                .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
+                .into(mMoviePoster);
+
+
+        float vote_average = movie.getVote_average().floatValue();
+        mMovieReleaseDate.setText(movie.getRelease_date());
+        mRatingBar.setRating(vote_average);
+        mSynopsis.setText(movie.getOverview());
+    }
+
+    private void callToVideos(ApiInterface apiInterface) {
+
         Call<Videos> call = apiInterface.getVideos(API_KEY);
         call.enqueue(new Callback<Videos>() {
             @Override
@@ -133,19 +145,44 @@ public class IndividualMovieActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void callToReviews(ApiInterface apiInterface){
+        Call<Reviews> call = apiInterface.getReviews(API_KEY);
+        call.enqueue(new Callback<Reviews>() {
+            @Override
+            public void onResponse(Call<Reviews> call, Response<Reviews> response) {
+                mReviewResults = response.body().getResults();
+                if (mReviewResults != null && mReviewResults.size() != 0);
+                Log.v("REVIEW_RESULTS", String.valueOf(mReviewResults.size()));
+            }
+
+            @Override
+            public void onFailure(Call<Reviews> call, Throwable t) {
+
+            }
+        });
 
 
+    }
 
-        mMovieTitle.setText(title);
-        Picasso.get()
-                .load("http://image.tmdb.org/t/p/w185" + movie.getPoster_path())
-                .into(mMoviePoster);
+    private ApiInterface initializeRetrofitItems() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
+        OkHttpClient client = new OkHttpClient
+                .Builder()
+                .addInterceptor(interceptor)
+                .build();
 
-        float vote_average = movie.getVote_average().floatValue();
-        mMovieReleaseDate.setText(movie.getRelease_date());
-        mRatingBar.setRating(vote_average);
-        mSynopsis.setText(movie.getOverview());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(mBaseURL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        return  apiInterface;
     }
 
     public class MyAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyAdapter.ViewHolder> {
@@ -204,10 +241,11 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
     }
 
-
     public interface ApiInterface {
         @GET("videos?language=en-US")
         Call<Videos> getVideos(@Query("api_key") String api_key);
+        @GET("reviews?lanaguage=en-US")
+        Call<Reviews> getReviews(@Query("api_key") String key);
     }
 }
 
