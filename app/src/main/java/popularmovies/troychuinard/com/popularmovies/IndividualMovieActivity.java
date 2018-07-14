@@ -2,6 +2,7 @@ package popularmovies.troychuinard.com.popularmovies;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,9 @@ public class IndividualMovieActivity extends AppCompatActivity {
     private String mYouTubeID;
     private ApiInterface mAPIInterface;
     private AppDatabase mDb;
+    private SharedPreferences editor;
+
+    private static final String SHARED_PREFERECES = "pref";
 
     private List<Video> mVideoResults;
     private ArrayList<Review> mReviewResults;
@@ -83,6 +87,11 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMovieTitle = findViewById(R.id.movie_name);
         mMoviePoster = findViewById(R.id.movie_details_movie_poster_image);
         mFavoriteButton = findViewById(R.id.button_favorite);
+        editor = getSharedPreferences(SHARED_PREFERECES, MODE_PRIVATE);
+        boolean favoriteChecked = editor.getBoolean("FAVORITE_CHECKED", false);
+        if (favoriteChecked){
+            mFavoriteButton.setChecked(true);
+        }
         final ScaleAnimation scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
         scaleAnimation.setDuration(500);
         BounceInterpolator bounceInterpolator = new BounceInterpolator();
@@ -91,13 +100,24 @@ public class IndividualMovieActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 compoundButton.startAnimation(scaleAnimation);
-                if (b){
+                if (compoundButton.isChecked()){
                     AppExecutors.getsInstance().diskIO().execute(new Runnable() {
                         @Override
                         public void run() {
                             mDb.movieDao().insertMovie(movie);
+                            editor.edit()
+                                    .putBoolean("FAVORITE_CHECKED", true)
+                                    .apply();
                         }
                     });
+                if (!compoundButton.isChecked()){
+                    AppExecutors.getsInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDb.movieDao().deleteMovie(movie);
+                        }
+                    });
+                }
 
                 }
             }

@@ -5,6 +5,7 @@
     <string-array name="spiner_list_item_array">
         <item>Popular</item>
         <item>Top Rated</item>
+        <item>Favorite</item>
     </string-array>
     <string name="title_activity_individual_movie">IndividualMovieActivity</string>
 </resources>
