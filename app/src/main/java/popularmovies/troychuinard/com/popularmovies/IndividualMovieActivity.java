@@ -71,7 +71,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        Movie movie = intent.getParcelableExtra("Movie");
+        final Movie movie = intent.getParcelableExtra("Movie");
         String title = movie.getOriginal_title();
         int movie_id = movie.getId();
         final String movie_id_string = String.valueOf(movie_id);
@@ -92,7 +92,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 compoundButton.startAnimation(scaleAnimation);
                 if (b){
-
+                    mDb.movieDao().insertMovie(movie);
                 }
             }
         });

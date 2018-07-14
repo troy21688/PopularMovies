@@ -5,11 +5,12 @@ INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifes
 INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
 INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
 MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2a6192c260caf5972bf94997c239a7e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:2:1-13:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:2:1-14:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:design:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a8851863b40c773d7eb0c580ab665393/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b324e3187c06962535a6fd640f1ba07f/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/14ad70c67f8111a7fdd6396395786f35/AndroidManifest.xml:17:1-22:12
-MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:2:1-14:12
 MERGED from [com.android.support:exifinterface:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/add600c1f19ea6c1c3feb150c6f632ed/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/4ad563496c4ccaa7f28f8053e4b321bc/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/db-framework-1.1.1.aar/f6c4798d92de076eefcf4505a83461b2/AndroidManifest.xml:17:1-22:12
@@ -53,10 +54,12 @@ ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.x
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:6:22-76
 application
 ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:8:5-23:19
-MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:9:5-20
+MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:11:5-20
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:7:5-12:19
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:7:5-12:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:9:5-20
 	android:supportsRtl
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:13:9-35
 	android:label
@@ -93,6 +96,10 @@ INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifes
 INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
 MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2a6192c260caf5972bf94997c239a7e/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2a6192c260caf5972bf94997c239a7e/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:7:5-9:41
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:5:5-44
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/dbc49bb101bc68b391ac5eec6b01c97a/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:design:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a8851863b40c773d7eb0c580ab665393/AndroidManifest.xml:20:5-44
@@ -101,8 +108,6 @@ MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/troychuinard/.gradl
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b324e3187c06962535a6fd640f1ba07f/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/14ad70c67f8111a7fdd6396395786f35/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/14ad70c67f8111a7fdd6396395786f35/AndroidManifest.xml:20:5-44
-MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:5:5-44
-MERGED from [com.squareup.picasso:picasso:2.71828] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/picasso-2.71828.aar/e218c723acde92346106c9f0b250a92f/AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:exifinterface:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/add600c1f19ea6c1c3feb150c6f632ed/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:exifinterface:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/add600c1f19ea6c1c3feb150c6f632ed/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/4ad563496c4ccaa7f28f8053e4b321bc/AndroidManifest.xml:20:5-44

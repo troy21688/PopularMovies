@@ -6,6 +6,7 @@ import android.arch.persistence.room.EntityInsertionAdapter;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.RoomSQLiteQuery;
 import android.database.Cursor;
+import java.lang.Integer;
 import java.lang.Number;
 import java.lang.Override;
 import java.lang.String;
@@ -13,6 +14,7 @@ import java.lang.SuppressWarnings;
 import java.util.ArrayList;
 import java.util.List;
 import popularmovies.troychuinard.com.popularmovies.Model.Movie;
+import popularmovies.troychuinard.com.popularmovies.Model.NumberConverter;
 
 @SuppressWarnings("unchecked")
 public class MovieDao_Impl implements MovieDao {
@@ -29,7 +31,7 @@ public class MovieDao_Impl implements MovieDao {
     this.__insertionAdapterOfMovie = new EntityInsertionAdapter<Movie>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `Movie`(`vote_count`,`id`,`video`,`title`,`popularity`,`poster_path`,`original_language`,`original_title`,`genre_ids`,`backdrop_path`,`adult`,`overview`,`release_date`,`vote_average`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `Movie`(`vote_count`,`id`,`video`,`title`,`popularity`,`poster_path`,`original_language`,`original_title`,`backdrop_path`,`adult`,`overview`,`release_date`,`vote_average`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -61,22 +63,29 @@ public class MovieDao_Impl implements MovieDao {
           stmt.bindString(8, value.getOriginal_title());
         }
         if (value.getBackdrop_path() == null) {
-          stmt.bindNull(10);
+          stmt.bindNull(9);
         } else {
-          stmt.bindString(10, value.getBackdrop_path());
+          stmt.bindString(9, value.getBackdrop_path());
         }
         final int _tmp_1;
         _tmp_1 = value.isAdult() ? 1 : 0;
-        stmt.bindLong(11, _tmp_1);
+        stmt.bindLong(10, _tmp_1);
         if (value.getOverview() == null) {
-          stmt.bindNull(12);
+          stmt.bindNull(11);
         } else {
-          stmt.bindString(12, value.getOverview());
+          stmt.bindString(11, value.getOverview());
         }
         if (value.getRelease_date() == null) {
+          stmt.bindNull(12);
+        } else {
+          stmt.bindString(12, value.getRelease_date());
+        }
+        final Integer _tmp_2;
+        _tmp_2 = NumberConverter.toInt(value.getVote_average());
+        if (_tmp_2 == null) {
           stmt.bindNull(13);
         } else {
-          stmt.bindString(13, value.getRelease_date());
+          stmt.bindLong(13, _tmp_2);
         }
       }
     };
@@ -94,7 +103,7 @@ public class MovieDao_Impl implements MovieDao {
     this.__updateAdapterOfMovie = new EntityDeletionOrUpdateAdapter<Movie>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR REPLACE `Movie` SET `vote_count` = ?,`id` = ?,`video` = ?,`title` = ?,`popularity` = ?,`poster_path` = ?,`original_language` = ?,`original_title` = ?,`genre_ids` = ?,`backdrop_path` = ?,`adult` = ?,`overview` = ?,`release_date` = ?,`vote_average` = ? WHERE `id` = ?";
+        return "UPDATE OR REPLACE `Movie` SET `vote_count` = ?,`id` = ?,`video` = ?,`title` = ?,`popularity` = ?,`poster_path` = ?,`original_language` = ?,`original_title` = ?,`backdrop_path` = ?,`adult` = ?,`overview` = ?,`release_date` = ?,`vote_average` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -126,24 +135,31 @@ public class MovieDao_Impl implements MovieDao {
           stmt.bindString(8, value.getOriginal_title());
         }
         if (value.getBackdrop_path() == null) {
-          stmt.bindNull(10);
+          stmt.bindNull(9);
         } else {
-          stmt.bindString(10, value.getBackdrop_path());
+          stmt.bindString(9, value.getBackdrop_path());
         }
         final int _tmp_1;
         _tmp_1 = value.isAdult() ? 1 : 0;
-        stmt.bindLong(11, _tmp_1);
+        stmt.bindLong(10, _tmp_1);
         if (value.getOverview() == null) {
-          stmt.bindNull(12);
+          stmt.bindNull(11);
         } else {
-          stmt.bindString(12, value.getOverview());
+          stmt.bindString(11, value.getOverview());
         }
         if (value.getRelease_date() == null) {
+          stmt.bindNull(12);
+        } else {
+          stmt.bindString(12, value.getRelease_date());
+        }
+        final Integer _tmp_2;
+        _tmp_2 = NumberConverter.toInt(value.getVote_average());
+        if (_tmp_2 == null) {
           stmt.bindNull(13);
         } else {
-          stmt.bindString(13, value.getRelease_date());
+          stmt.bindLong(13, _tmp_2);
         }
-        stmt.bindLong(15, value.getId());
+        stmt.bindLong(14, value.getId());
       }
     };
   }
@@ -195,7 +211,6 @@ public class MovieDao_Impl implements MovieDao {
       final int _cursorIndexOfPosterPath = _cursor.getColumnIndexOrThrow("poster_path");
       final int _cursorIndexOfOriginalLanguage = _cursor.getColumnIndexOrThrow("original_language");
       final int _cursorIndexOfOriginalTitle = _cursor.getColumnIndexOrThrow("original_title");
-      final int _cursorIndexOfGenreIds = _cursor.getColumnIndexOrThrow("genre_ids");
       final int _cursorIndexOfBackdropPath = _cursor.getColumnIndexOrThrow("backdrop_path");
       final int _cursorIndexOfAdult = _cursor.getColumnIndexOrThrow("adult");
       final int _cursorIndexOfOverview = _cursor.getColumnIndexOrThrow("overview");
@@ -222,7 +237,6 @@ public class MovieDao_Impl implements MovieDao {
         _tmpOriginal_language = _cursor.getString(_cursorIndexOfOriginalLanguage);
         final String _tmpOriginal_title;
         _tmpOriginal_title = _cursor.getString(_cursorIndexOfOriginalTitle);
-        final ArrayList<String> _tmpGenre_ids;
         final String _tmpBackdrop_path;
         _tmpBackdrop_path = _cursor.getString(_cursorIndexOfBackdropPath);
         final boolean _tmpAdult;
@@ -234,7 +248,14 @@ public class MovieDao_Impl implements MovieDao {
         final String _tmpRelease_date;
         _tmpRelease_date = _cursor.getString(_cursorIndexOfReleaseDate);
         final Number _tmpVote_average;
-        _item = new Movie(_tmpVote_count,_tmpId,_tmpVideo,_tmpTitle,_tmpPopularity,_tmpPoster_path,_tmpOriginal_language,_tmpOriginal_title,_tmpGenre_ids,_tmpBackdrop_path,_tmpAdult,_tmpOverview,_tmpRelease_date,_tmpVote_average);
+        final Integer _tmp_2;
+        if (_cursor.isNull(_cursorIndexOfVoteAverage)) {
+          _tmp_2 = null;
+        } else {
+          _tmp_2 = _cursor.getInt(_cursorIndexOfVoteAverage);
+        }
+        _tmpVote_average = NumberConverter.toNumber(_tmp_2);
+        _item = new Movie(_tmpVote_count,_tmpId,_tmpVideo,_tmpTitle,_tmpPopularity,_tmpPoster_path,_tmpOriginal_language,_tmpOriginal_title,_tmpBackdrop_path,_tmpAdult,_tmpOverview,_tmpRelease_date,_tmpVote_average);
         _result.add(_item);
       }
       return _result;

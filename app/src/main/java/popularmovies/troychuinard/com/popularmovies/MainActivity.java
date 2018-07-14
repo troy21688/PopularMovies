@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.facebook.stetho.Stetho;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (isOnline()){
             setContentView(R.layout.activity_main);
-
+            Stetho.initializeWithDefaults(this);
+            mDb = AppDatabase.getInstance(getApplicationContext());
             mMovieResults = findViewById(R.id.main_recyclerview_image_results);
             GridLayoutManager glm = new GridLayoutManager(this, 3);
             glm.setOrientation(LinearLayoutManager.VERTICAL);

@@ -21,7 +21,6 @@ public class Movie implements Parcelable {
     private String poster_path;
     private String original_language;
     private String original_title;
-    private ArrayList<String> genre_ids;
     private String backdrop_path;
     private boolean adult;
     private String overview;
@@ -32,7 +31,7 @@ public class Movie implements Parcelable {
     public Movie() {
     }
 
-    public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, ArrayList<String> genre_ids, String backdrop_path, boolean adult, String overview, String release_date, Number vote_average) {
+    public Movie(int vote_count, int id, boolean video, String title, float popularity, String poster_path, String original_language, String original_title, String backdrop_path, boolean adult, String overview, String release_date, Number vote_average) {
         this.vote_count = vote_count;
         this.id = id;
         this.video = video;
@@ -41,7 +40,6 @@ public class Movie implements Parcelable {
         this.poster_path = poster_path;
         this.original_language = original_language;
         this.original_title = original_title;
-        this.genre_ids = genre_ids;
         this.backdrop_path = backdrop_path;
         this.adult = adult;
         this.overview = overview;
@@ -58,7 +56,6 @@ public class Movie implements Parcelable {
         poster_path = in.readString();
         original_language = in.readString();
         original_title = in.readString();
-        genre_ids = in.createStringArrayList();
         backdrop_path = in.readString();
         adult = in.readByte() != 0;
         overview = in.readString();
@@ -110,9 +107,6 @@ public class Movie implements Parcelable {
         this.original_title = original_title;
     }
 
-    public void setGenre_ids(ArrayList<String> genre_ids) {
-        this.genre_ids = genre_ids;
-    }
 
     public void setBackdrop_path(String backdrop_path) {
         this.backdrop_path = backdrop_path;
@@ -162,9 +156,6 @@ public class Movie implements Parcelable {
         return original_title;
     }
 
-    public ArrayList<String> getGenre_ids() {
-        return genre_ids;
-    }
 
     public String getBackdrop_path() {
         return backdrop_path;
@@ -201,7 +192,6 @@ public class Movie implements Parcelable {
         parcel.writeString(poster_path);
         parcel.writeString(original_language);
         parcel.writeString(original_title);
-        parcel.writeStringList(genre_ids);
         parcel.writeString(backdrop_path);
         parcel.writeByte((byte) (adult ? 1 : 0));
         parcel.writeString(overview);
