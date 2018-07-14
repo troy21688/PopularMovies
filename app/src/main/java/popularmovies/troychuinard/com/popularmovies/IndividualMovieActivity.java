@@ -92,7 +92,13 @@ public class IndividualMovieActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 compoundButton.startAnimation(scaleAnimation);
                 if (b){
-                    mDb.movieDao().insertMovie(movie);
+                    AppExecutors.getsInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDb.movieDao().insertMovie(movie);
+                        }
+                    });
+
                 }
             }
         });
