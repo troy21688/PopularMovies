@@ -60,6 +60,10 @@
         "source": "/Users/troychuinard/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b324e3187c06962535a6fd640f1ba07f/res/drawable-mdpi-v4/abc_textfield_default_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/troychuinard/Code/PopularMovies/app/build/intermediates/res/merged/debug/layout_review_view.xml.flat",
+        "source": "/Users/troychuinard/Code/PopularMovies/app/src/main/res/layout/review_view.xml"
+    },
+    {
         "merged": "/Users/troychuinard/Code/PopularMovies/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "/Users/troychuinard/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8ba418110e84605263ffbde21c3409f2/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
     },

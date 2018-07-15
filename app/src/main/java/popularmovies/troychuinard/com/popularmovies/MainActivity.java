@@ -148,8 +148,14 @@ public class MainActivity extends AppCompatActivity {
                     Log.v("FAVORITE_URL", photoURL);
                     mMovieURLS.add(photoURL);
                 }
-                mMovieResultsAdapter.swapDataSet(mMovieURLS);
-                mMovieResultsAdapter.notifyDataSetChanged();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMovieResultsAdapter.swapDataSet(mMovieURLS);
+                        mMovieResultsAdapter.notifyDataSetChanged();
+                    }
+                });
+
             }
         });
     }

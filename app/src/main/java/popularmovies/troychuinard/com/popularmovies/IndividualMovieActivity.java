@@ -53,6 +53,8 @@ public class IndividualMovieActivity extends AppCompatActivity {
     private String mBaseURL;
     private RecyclerView mVideoRecyclerView;
     private MyAdapter mRecyclerAdapter;
+    private MyReviewAdapter mReviewAdapter;
+    private RecyclerView mReviewRecyclerView;
     private String mYouTubeID;
     private ApiInterface mAPIInterface;
     private AppDatabase mDb;
@@ -61,11 +63,12 @@ public class IndividualMovieActivity extends AppCompatActivity {
     private static final String SHARED_PREFERECES = "pref";
 
     private List<Video> mVideoResults;
-    private ArrayList<Review> mReviewResults;
+    private List<Review> mReviewResults;
 
     private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
 
     private static final String NEW_DATE_FORMAT = "MM/dd/yyyy";
+
 
 
     @Override
@@ -180,6 +183,12 @@ public class IndividualMovieActivity extends AppCompatActivity {
                 mReviewResults = response.body().getResults();
                 if (mReviewResults != null && mReviewResults.size() != 0) ;
                 Log.v("REVIEW_RESULTS", String.valueOf(mReviewResults.size()));
+                mReviewRecyclerView = findViewById(R.id.main_reviews);
+                LinearLayoutManager lm = new LinearLayoutManager(getApplicationContext());
+                lm.setOrientation(LinearLayoutManager.VERTICAL);
+                mReviewRecyclerView.setLayoutManager(lm);
+                mReviewAdapter = new MyReviewAdapter(mReviewResults);
+                mReviewRecyclerView.setAdapter(mReviewAdapter);
             }
 
             @Override
@@ -209,6 +218,44 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
         return apiInterface;
     }
+
+
+    public class MyReviewAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyReviewAdapter.ViewHolder>{
+
+        public class ViewHolder extends RecyclerView.ViewHolder{
+
+            protected TextView mTextView;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+                mTextView = itemView.findViewById(R.id.movie_review);
+            }
+        }
+
+        public MyReviewAdapter(List<Review> mReviewSet) {
+            mReviewResults = mReviewSet;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.review_view,parent,false);
+            return new ViewHolder(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            String reviewText = mReviewResults.get(position).getContent();
+            Log.v("REVIEW_TEXT", reviewText);
+            holder.mTextView.setText(reviewText);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mReviewResults.size();
+        }
+    }
+
 
     public class MyAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyAdapter.ViewHolder> {
 

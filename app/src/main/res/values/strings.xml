@@ -8,4 +8,6 @@
         <item>Favorite</item>
     </string-array>
     <string name="title_activity_individual_movie">IndividualMovieActivity</string>
+    <string name="Trailers">Trailers</string>
+    <string name="reviews">Reviews</string>
 </resources>
