@@ -7,7 +7,7 @@ public class NumberConverter {
 
     @TypeConverter
     public static Number toNumber(Integer integer){
-        return integer == null ? null : toNumber(integer); }
+        return integer; }
 
 
     @TypeConverter

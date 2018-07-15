@@ -88,8 +88,8 @@ public class IndividualMovieActivity extends AppCompatActivity {
         mMoviePoster = findViewById(R.id.movie_details_movie_poster_image);
         mFavoriteButton = findViewById(R.id.button_favorite);
         editor = getSharedPreferences(SHARED_PREFERECES, MODE_PRIVATE);
-        boolean favoriteChecked = editor.getBoolean("FAVORITE_CHECKED", false);
-        if (favoriteChecked){
+        boolean favoriteChecked = editor.getBoolean(movie_id_string, false);
+        if (favoriteChecked) {
             mFavoriteButton.setChecked(true);
         }
         final ScaleAnimation scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
@@ -100,25 +100,24 @@ public class IndividualMovieActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 compoundButton.startAnimation(scaleAnimation);
-                if (compoundButton.isChecked()){
+                if (compoundButton.isChecked()) {
                     AppExecutors.getsInstance().diskIO().execute(new Runnable() {
                         @Override
                         public void run() {
                             mDb.movieDao().insertMovie(movie);
                             editor.edit()
-                                    .putBoolean("FAVORITE_CHECKED", true)
+                                    .putBoolean(movie_id_string, true)
                                     .apply();
                         }
                     });
-                if (!compoundButton.isChecked()){
+
+                } else if (!compoundButton.isChecked()) {
                     AppExecutors.getsInstance().diskIO().execute(new Runnable() {
                         @Override
                         public void run() {
                             mDb.movieDao().deleteMovie(movie);
                         }
                     });
-                }
-
                 }
             }
         });
@@ -173,13 +172,13 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
     }
 
-    private void callToReviews(ApiInterface apiInterface){
+    private void callToReviews(ApiInterface apiInterface) {
         Call<Reviews> call = apiInterface.getReviews(API_KEY);
         call.enqueue(new Callback<Reviews>() {
             @Override
             public void onResponse(Call<Reviews> call, Response<Reviews> response) {
                 mReviewResults = response.body().getResults();
-                if (mReviewResults != null && mReviewResults.size() != 0);
+                if (mReviewResults != null && mReviewResults.size() != 0) ;
                 Log.v("REVIEW_RESULTS", String.valueOf(mReviewResults.size()));
             }
 
@@ -208,7 +207,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
                 .build();
         final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
-        return  apiInterface;
+        return apiInterface;
     }
 
     public class MyAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyAdapter.ViewHolder> {
@@ -238,7 +237,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.mTextView.setText("Trailer " + String.valueOf(position +1) );
+            holder.mTextView.setText("Trailer " + String.valueOf(position + 1));
             final String youTubeID = mVideoResults.get(position).getKey();
             Log.v("YOUTUBE_ID", youTubeID);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -270,6 +269,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
     public interface ApiInterface {
         @GET("videos?language=en-US")
         Call<Videos> getVideos(@Query("api_key") String api_key);
+
         @GET("reviews?lanaguage=en-US")
         Call<Reviews> getReviews(@Query("api_key") String key);
     }

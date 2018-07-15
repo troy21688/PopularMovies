@@ -1,11 +1,15 @@
 package popularmovies.troychuinard.com.popularmovies;
 
+import android.arch.lifecycle.ComputableLiveData;
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.db.SupportSQLiteStatement;
 import android.arch.persistence.room.EntityDeletionOrUpdateAdapter;
 import android.arch.persistence.room.EntityInsertionAdapter;
+import android.arch.persistence.room.InvalidationTracker.Observer;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.RoomSQLiteQuery;
 import android.database.Cursor;
+import android.support.annotation.NonNull;
 import java.lang.Integer;
 import java.lang.Number;
 import java.lang.Override;
@@ -13,6 +17,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import popularmovies.troychuinard.com.popularmovies.Model.Movie;
 import popularmovies.troychuinard.com.popularmovies.Model.NumberConverter;
 
@@ -198,70 +203,90 @@ public class MovieDao_Impl implements MovieDao {
   }
 
   @Override
-  public List<Movie> loadAllMovies() {
+  public LiveData<List<Movie>> loadAllMovies() {
     final String _sql = "SELECT * FROM Movie";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfVoteCount = _cursor.getColumnIndexOrThrow("vote_count");
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfVideo = _cursor.getColumnIndexOrThrow("video");
-      final int _cursorIndexOfTitle = _cursor.getColumnIndexOrThrow("title");
-      final int _cursorIndexOfPopularity = _cursor.getColumnIndexOrThrow("popularity");
-      final int _cursorIndexOfPosterPath = _cursor.getColumnIndexOrThrow("poster_path");
-      final int _cursorIndexOfOriginalLanguage = _cursor.getColumnIndexOrThrow("original_language");
-      final int _cursorIndexOfOriginalTitle = _cursor.getColumnIndexOrThrow("original_title");
-      final int _cursorIndexOfBackdropPath = _cursor.getColumnIndexOrThrow("backdrop_path");
-      final int _cursorIndexOfAdult = _cursor.getColumnIndexOrThrow("adult");
-      final int _cursorIndexOfOverview = _cursor.getColumnIndexOrThrow("overview");
-      final int _cursorIndexOfReleaseDate = _cursor.getColumnIndexOrThrow("release_date");
-      final int _cursorIndexOfVoteAverage = _cursor.getColumnIndexOrThrow("vote_average");
-      final List<Movie> _result = new ArrayList<Movie>(_cursor.getCount());
-      while(_cursor.moveToNext()) {
-        final Movie _item;
-        final int _tmpVote_count;
-        _tmpVote_count = _cursor.getInt(_cursorIndexOfVoteCount);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        final boolean _tmpVideo;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfVideo);
-        _tmpVideo = _tmp != 0;
-        final String _tmpTitle;
-        _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
-        final float _tmpPopularity;
-        _tmpPopularity = _cursor.getFloat(_cursorIndexOfPopularity);
-        final String _tmpPoster_path;
-        _tmpPoster_path = _cursor.getString(_cursorIndexOfPosterPath);
-        final String _tmpOriginal_language;
-        _tmpOriginal_language = _cursor.getString(_cursorIndexOfOriginalLanguage);
-        final String _tmpOriginal_title;
-        _tmpOriginal_title = _cursor.getString(_cursorIndexOfOriginalTitle);
-        final String _tmpBackdrop_path;
-        _tmpBackdrop_path = _cursor.getString(_cursorIndexOfBackdropPath);
-        final boolean _tmpAdult;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfAdult);
-        _tmpAdult = _tmp_1 != 0;
-        final String _tmpOverview;
-        _tmpOverview = _cursor.getString(_cursorIndexOfOverview);
-        final String _tmpRelease_date;
-        _tmpRelease_date = _cursor.getString(_cursorIndexOfReleaseDate);
-        final Number _tmpVote_average;
-        final Integer _tmp_2;
-        if (_cursor.isNull(_cursorIndexOfVoteAverage)) {
-          _tmp_2 = null;
-        } else {
-          _tmp_2 = _cursor.getInt(_cursorIndexOfVoteAverage);
+    return new ComputableLiveData<List<Movie>>() {
+      private Observer _observer;
+
+      @Override
+      protected List<Movie> compute() {
+        if (_observer == null) {
+          _observer = new Observer("Movie") {
+            @Override
+            public void onInvalidated(@NonNull Set<String> tables) {
+              invalidate();
+            }
+          };
+          __db.getInvalidationTracker().addWeakObserver(_observer);
         }
-        _tmpVote_average = NumberConverter.toNumber(_tmp_2);
-        _item = new Movie(_tmpVote_count,_tmpId,_tmpVideo,_tmpTitle,_tmpPopularity,_tmpPoster_path,_tmpOriginal_language,_tmpOriginal_title,_tmpBackdrop_path,_tmpAdult,_tmpOverview,_tmpRelease_date,_tmpVote_average);
-        _result.add(_item);
+        final Cursor _cursor = __db.query(_statement);
+        try {
+          final int _cursorIndexOfVoteCount = _cursor.getColumnIndexOrThrow("vote_count");
+          final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+          final int _cursorIndexOfVideo = _cursor.getColumnIndexOrThrow("video");
+          final int _cursorIndexOfTitle = _cursor.getColumnIndexOrThrow("title");
+          final int _cursorIndexOfPopularity = _cursor.getColumnIndexOrThrow("popularity");
+          final int _cursorIndexOfPosterPath = _cursor.getColumnIndexOrThrow("poster_path");
+          final int _cursorIndexOfOriginalLanguage = _cursor.getColumnIndexOrThrow("original_language");
+          final int _cursorIndexOfOriginalTitle = _cursor.getColumnIndexOrThrow("original_title");
+          final int _cursorIndexOfBackdropPath = _cursor.getColumnIndexOrThrow("backdrop_path");
+          final int _cursorIndexOfAdult = _cursor.getColumnIndexOrThrow("adult");
+          final int _cursorIndexOfOverview = _cursor.getColumnIndexOrThrow("overview");
+          final int _cursorIndexOfReleaseDate = _cursor.getColumnIndexOrThrow("release_date");
+          final int _cursorIndexOfVoteAverage = _cursor.getColumnIndexOrThrow("vote_average");
+          final List<Movie> _result = new ArrayList<Movie>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Movie _item;
+            final int _tmpVote_count;
+            _tmpVote_count = _cursor.getInt(_cursorIndexOfVoteCount);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            final boolean _tmpVideo;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfVideo);
+            _tmpVideo = _tmp != 0;
+            final String _tmpTitle;
+            _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
+            final float _tmpPopularity;
+            _tmpPopularity = _cursor.getFloat(_cursorIndexOfPopularity);
+            final String _tmpPoster_path;
+            _tmpPoster_path = _cursor.getString(_cursorIndexOfPosterPath);
+            final String _tmpOriginal_language;
+            _tmpOriginal_language = _cursor.getString(_cursorIndexOfOriginalLanguage);
+            final String _tmpOriginal_title;
+            _tmpOriginal_title = _cursor.getString(_cursorIndexOfOriginalTitle);
+            final String _tmpBackdrop_path;
+            _tmpBackdrop_path = _cursor.getString(_cursorIndexOfBackdropPath);
+            final boolean _tmpAdult;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfAdult);
+            _tmpAdult = _tmp_1 != 0;
+            final String _tmpOverview;
+            _tmpOverview = _cursor.getString(_cursorIndexOfOverview);
+            final String _tmpRelease_date;
+            _tmpRelease_date = _cursor.getString(_cursorIndexOfReleaseDate);
+            final Number _tmpVote_average;
+            final Integer _tmp_2;
+            if (_cursor.isNull(_cursorIndexOfVoteAverage)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfVoteAverage);
+            }
+            _tmpVote_average = NumberConverter.toNumber(_tmp_2);
+            _item = new Movie(_tmpVote_count,_tmpId,_tmpVideo,_tmpTitle,_tmpPopularity,_tmpPoster_path,_tmpOriginal_language,_tmpOriginal_title,_tmpBackdrop_path,_tmpAdult,_tmpOverview,_tmpRelease_date,_tmpVote_average);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    }.getLiveData();
   }
 }

@@ -1,10 +1,14 @@
 package popularmovies.troychuinard.com.popularmovies;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -110,20 +114,9 @@ public class MainActivity extends AppCompatActivity {
                             calltoRetrofit(mBaseURL);
                             break;
                         case 2:
-                            AppExecutors.getsInstance().diskIO().execute(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mMovieURLS.clear();
-                                    List<Movie> movies = mDb.movieDao().loadAllMovies();
-                                    for (Movie movie : movies) {
-                                        String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
-                                        mMovieURLS.add(photoURL);
-                                    }
-                                    mMovieResultsAdapter.swapDataSet(mMovieURLS);
-                                    mIsFavoriteSelected = true;
-
-                                }
-                            });
+                            mIsFavoriteSelected = true;
+                            mMovieURLS.clear();
+                            retrieveTasks();
                             break;
 
                         default:
@@ -143,6 +136,22 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return true;
         }
+    }
+
+    private void retrieveTasks() {
+        final LiveData<List<Movie>> movies = mDb.movieDao().loadAllMovies();
+        movies.observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movies) {
+                for (Movie movie : movies) {
+                    String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
+                    Log.v("FAVORITE_URL", photoURL);
+                    mMovieURLS.add(photoURL);
+                }
+                mMovieResultsAdapter.swapDataSet(mMovieURLS);
+                mMovieResultsAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void calltoRetrofit(String mBaseURL) {
@@ -239,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
 
         public void swapDataSet(ArrayList<String> dataset) {
             mMovieURLS = dataset;
-            notifyDataSetChanged();
 
         }
 
