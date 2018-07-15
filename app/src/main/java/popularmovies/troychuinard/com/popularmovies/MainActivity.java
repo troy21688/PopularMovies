@@ -139,10 +139,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void retrieveTasks() {
+        //TODO: I am unsure if I am handling correctly. When I favorite and unfavorite a movie, and then go back to the MainActivity, it is not displaying the correct item from the Spinner.
+        //TODO: For example, favorites may be listed in the Spinner, however the screen may be displaying "TOP"
+        //TODO: How could I tell if I am making unnecessary queries to Room? I know it is a project requirement, but I was not sure how to handle if I am making unnecessary calls
+        //TODO: on screen rotation
         final LiveData<List<Movie>> movies = mDb.movieDao().loadAllMovies();
         movies.observe(this, new Observer<List<Movie>>() {
             @Override
-            public void onChanged(@Nullable List<Movie> movies) {
+            public void onChanged(@Nullable final List<Movie> movies) {
                 for (Movie movie : movies) {
                     String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
                     Log.v("FAVORITE_URL", photoURL);
@@ -151,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mMovieResultsAdapter.swapDataSet(mMovieURLS);
+                        mMovieResultsList = movies;
                         mMovieResultsAdapter.notifyDataSetChanged();
                     }
                 });
@@ -189,10 +193,8 @@ public class MainActivity extends AppCompatActivity {
                 for (Movie movie : mMovieResultsList) {
                     if (movie.getPoster_path() != null) {
                         String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
-//                                Log.v("MOVIE_URL", photoURL);
                         mMovieURLS.add(photoURL);
                     }
-                    mMovieResultsAdapter.swapDataSet(mMovieURLS);
                     mMovieResultsAdapter.notifyDataSetChanged();
                 }
             }
@@ -251,12 +253,6 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return mMovieResultsList.size();
         }
-
-        public void swapDataSet(ArrayList<String> dataset) {
-            mMovieURLS = dataset;
-
-        }
-
 
     }
 

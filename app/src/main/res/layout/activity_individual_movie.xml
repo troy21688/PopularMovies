@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
 
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -57,8 +58,9 @@
 
                 <ToggleButton
                     android:id="@+id/button_favorite"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/button_favorite"
                     android:checked="false"
                     android:text=""

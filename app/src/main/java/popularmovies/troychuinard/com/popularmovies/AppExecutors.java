@@ -8,6 +8,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.logging.Handler;
 
+//TODO: Do I even need this class anymore? Or is this all encapsulated/handled with LiveData?
 public class AppExecutors{
 
     //for Singleton Instantiation

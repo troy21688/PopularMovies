@@ -12,6 +12,8 @@ import java.util.Date;
 @Entity
 public class Movie implements Parcelable {
 
+
+    //TODO: Is it required to map directly to the API? Or can I omit as necessary?
     private int vote_count;
     @PrimaryKey
     private int id;

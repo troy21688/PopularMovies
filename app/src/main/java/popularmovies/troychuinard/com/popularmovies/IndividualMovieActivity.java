@@ -86,6 +86,8 @@ public class IndividualMovieActivity extends AppCompatActivity {
         Log.v("POSTER_PATH", movie.getPoster_path());
         Log.v("RELEASE", movie.getRelease_date().toString());
 
+        //TODO: I need assistance with material Design. For instance, without setting manual DP for my image that is displayed on IndividualMovieActivity, how would I set a percentage
+        //TODO: for the width and height of the image? Previously, I used layout_weight attribute for LinearLayout
         mDb = AppDatabase.getInstance(getApplicationContext());
         mMovieTitle = findViewById(R.id.movie_name);
         mMoviePoster = findViewById(R.id.movie_details_movie_poster_image);
@@ -119,6 +121,9 @@ public class IndividualMovieActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             mDb.movieDao().deleteMovie(movie);
+                            editor.edit()
+                                    .putBoolean(movie_id_string, false)
+                                    .apply();
                         }
                     });
                 }
@@ -220,6 +225,7 @@ public class IndividualMovieActivity extends AppCompatActivity {
     }
 
 
+    //TODO: I have 2 RecyclerView adapter. I feel this is horribly inefficient. However, they both use separate data sets (trailers and reviews). How could I encapsulate/simplify?
     public class MyReviewAdapter extends RecyclerView.Adapter<IndividualMovieActivity.MyReviewAdapter.ViewHolder>{
 
         public class ViewHolder extends RecyclerView.ViewHolder{
