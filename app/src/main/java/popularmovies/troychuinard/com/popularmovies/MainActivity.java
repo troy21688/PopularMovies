@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter mMovieResultsAdapter;
     private String query;
     private String mBaseURL;
-    private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
+//    private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
+    private static final String API_KEY = "09b0a9a9d5d9ddee2b3bc69e78b02457";
 
     private ArrayList<String> mMovieURLS;
     private ArrayList<Movie> mMovies;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor mPrefsEditor;
 
     private static Bundle mBundleRecyclerViewState;
-    private static final String KEY_RECYCLER_STATE = "recycler_state";
+
 
     private int saved_selection = -1;
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("ONCREATE", "ONCREATE");
         if (savedInstanceState != null){
             saved_selection = savedInstanceState.getInt(SPINNER_SELECTION);
         }
@@ -89,24 +91,37 @@ public class MainActivity extends AppCompatActivity {
             mDb = AppDatabase.getInstance(getApplicationContext());
             mMovieResults = findViewById(R.id.main_recyclerview_image_results);
             GridLayoutManager glm = new GridLayoutManager(this, 3);
-            if (savedInstanceState != null){
-                glm = savedInstanceState.getParcelable(KEY_RECYCLER_STATE);
-            }
             glm.setOrientation(LinearLayoutManager.VERTICAL);
             mMovieResults.setLayoutManager(glm);
             mMovieURLS = new ArrayList<>();
             mMovies = new ArrayList<>();
             mMovieResultsList = new ArrayList<>();
-
-
-
-
             mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
             mMovieResults.setAdapter(mMovieResultsAdapter);
             mDb = AppDatabase.getInstance(getApplicationContext());
             mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
 
             mPrefsEditor = mPrefs.edit();
+            switch (saved_selection){
+                    case 0:
+                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+                        calltoRetrofit(mBaseURL);
+                        break;
+                    case 1:
+                        mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
+                        calltoRetrofit(mBaseURL);
+                        break;
+                    case 2:
+                        mIsFavoriteSelected = true;
+                        mMovieURLS.clear();
+                        retrieveMovies();
+                        break;
+
+                    default:
+                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+                        break;
+                }
+
 
         } else {
             setContentView(R.layout.activity_no_internet);
@@ -115,23 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mBundleRecyclerViewState != null){
-            Parcelable listState = mBundleRecyclerViewState.getParcelable(KEY_RECYCLER_STATE);
-            mMovieResults.getLayoutManager().onRestoreInstanceState(listState);
-        }
 
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mBundleRecyclerViewState = new Bundle();
-        Parcelable listState = mMovieResults.getLayoutManager().onSaveInstanceState();
-        mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, listState);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -225,6 +226,31 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        switch (saved_selection){
+//            case 0:
+//                mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+//                calltoRetrofit(mBaseURL);
+//                break;
+//            case 1:
+//                mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
+//                calltoRetrofit(mBaseURL);
+//                break;
+//            case 2:
+//                mIsFavoriteSelected = true;
+//                mMovieURLS.clear();
+//                retrieveMovies();
+//                break;
+//
+//            default:
+//                mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
+//                break;
+//        }
+//        mSpinner.setSelection(saved_selection);
     }
 
     private void calltoRetrofit(String mBaseURL) {

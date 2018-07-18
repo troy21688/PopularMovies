@@ -5,24 +5,24 @@
     build-mode="COLD"
     density="560dpi"
     format="10"
-    ir-eligibility="FIELD_REMOVED"
+    ir-eligibility="COMPATIBLE"
     plugin-version="3.1.2"
-    timestamp="1531880863604"
+    timestamp="1531882853702"
     token="-5011088237312239508"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="10649" />
+        duration="7995" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="416" />
+        duration="261" />
     <task
         name="verifier"
-        duration="314" />
+        duration="173" />
 
     <artifact
         location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
@@ -71,8 +71,8 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="FIELD_REMOVED"
-        timestamp="1531880863604"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1531882853702"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/troychuinard/Code/PopularMovies/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
