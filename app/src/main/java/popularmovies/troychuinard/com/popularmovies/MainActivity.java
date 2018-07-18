@@ -2,11 +2,15 @@ package popularmovies.troychuinard.com.popularmovies;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -55,29 +59,54 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Movie> mMovies;
     private List<Movie> mMovieResultsList;
 
+    private static final String SPINNER_SELECTION = "SPINNER_SELECTION";
+
     private boolean mIsFavoriteSelected;
 
     private AppDatabase mDb;
+
+    private Spinner mSpinner;
+
+    private SharedPreferences mPrefs;
+    private SharedPreferences.Editor mPrefsEditor;
+
+    private static Bundle mBundleRecyclerViewState;
+    private static final String KEY_RECYCLER_STATE = "recycler_state";
+
+    private int saved_selection = -1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null){
+            saved_selection = savedInstanceState.getInt(SPINNER_SELECTION);
+        }
+
         if (isOnline()) {
             setContentView(R.layout.activity_main);
             Stetho.initializeWithDefaults(this);
             mDb = AppDatabase.getInstance(getApplicationContext());
             mMovieResults = findViewById(R.id.main_recyclerview_image_results);
             GridLayoutManager glm = new GridLayoutManager(this, 3);
+            if (savedInstanceState != null){
+                glm = savedInstanceState.getParcelable(KEY_RECYCLER_STATE);
+            }
             glm.setOrientation(LinearLayoutManager.VERTICAL);
             mMovieResults.setLayoutManager(glm);
             mMovieURLS = new ArrayList<>();
             mMovies = new ArrayList<>();
             mMovieResultsList = new ArrayList<>();
 
+
+
+
             mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
             mMovieResults.setAdapter(mMovieResultsAdapter);
             mDb = AppDatabase.getInstance(getApplicationContext());
+            mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
+            mPrefsEditor = mPrefs.edit();
 
         } else {
             setContentView(R.layout.activity_no_internet);
@@ -89,21 +118,38 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (mBundleRecyclerViewState != null){
+            Parcelable listState = mBundleRecyclerViewState.getParcelable(KEY_RECYCLER_STATE);
+            mMovieResults.getLayoutManager().onRestoreInstanceState(listState);
+        }
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mBundleRecyclerViewState = new Bundle();
+        Parcelable listState = mMovieResults.getLayoutManager().onSaveInstanceState();
+        mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, listState);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar_spinner, menu);
         MenuItem item = menu.findItem(R.id.spinner);
-        Spinner spinner = (Spinner) item.getActionView();
+        mSpinner = (Spinner) item.getActionView();
         if (isOnline()) {
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.spiner_list_item_array, R.layout.custom_spinner);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            mSpinner.setAdapter(adapter);
+            if (saved_selection >= 0){
+                mSpinner.setSelection(saved_selection);
+            }
+            mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    mPrefsEditor.putInt(SPINNER_SELECTION, i);
+                    mPrefsEditor.commit();
                     switch (i) {
                         case 0:
                             mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
@@ -116,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                         case 2:
                             mIsFavoriteSelected = true;
                             mMovieURLS.clear();
-                            retrieveTasks();
+                            retrieveMovies();
                             break;
 
                         default:
@@ -138,13 +184,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void retrieveTasks() {
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(SPINNER_SELECTION, mSpinner.getSelectedItemPosition());
+        super.onSaveInstanceState(outState);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        int x = item.getItemId();
+        Log.v("OPTIONS_ID", String.valueOf(x));
+        return true;
+    }
+
+    private void retrieveMovies() {
         //TODO: I am unsure if I am handling correctly. When I favorite and unfavorite a movie, and then go back to the MainActivity, it is not displaying the correct item from the Spinner.
         //TODO: For example, favorites may be listed in the Spinner, however the screen may be displaying "TOP"
         //TODO: How could I tell if I am making unnecessary queries to Room? I know it is a project requirement, but I was not sure how to handle if I am making unnecessary calls
         //TODO: on screen rotation
-        final LiveData<List<Movie>> movies = mDb.movieDao().loadAllMovies();
-        movies.observe(this, new Observer<List<Movie>>() {
+        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        final LiveData<List<Movie>> movies = viewModel.getMovies();
+                movies.observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable final List<Movie> movies) {
                 for (Movie movie : movies) {
@@ -204,6 +267,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("FAILURE", t.toString());
             }
         });
+    }
+
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -266,6 +336,35 @@ public class MainActivity extends AppCompatActivity {
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    static class SavedState extends android.view.View.BaseSavedState {
+        public int mScrollPosition;
+        SavedState(Parcel in) {
+            super(in);
+            mScrollPosition = in.readInt();
+        }
+        SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(mScrollPosition);
+        }
+        public static final Parcelable.Creator<SavedState> CREATOR
+                = new Parcelable.Creator<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            @Override
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 
 }
