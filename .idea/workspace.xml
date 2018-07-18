@@ -19,7 +19,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ONCREATE" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -34,6 +33,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" />
@@ -41,6 +43,10 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/popularmovies/troychuinard/com/popularmovies/MainActivity.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" />
@@ -48,8 +54,40 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/popularmovies/troychuinard/com/popularmovies/MainActivity.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_dep/debug/package_dependencies/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_dep/debug/package_dependencies/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_0/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_0/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_1/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_1/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_2/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_2/dex-renamer-state.txt" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_3/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_3/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_4/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_5/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_5/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_6/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_6/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_7/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_7/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_8/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_8/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_9/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_9/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/a+sArKaWw3yX6+ums2ebagXkrbk=" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/a+sArKaWw3yX6+ums2ebagXkrbk=" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/tmp/debug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/tmp/debug/dex-renamer-state.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/tmp/debug/zip-cache/a+sArKaWw3yX6+ums2ebagXkrbk=" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/tmp/debug/zip-cache/a+sArKaWw3yX6+ums2ebagXkrbk=" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest-checker/debug/manifest.crc" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest-checker/debug/manifest.crc" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest-checker/debug/manifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest-checker/debug/manifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/dep/dependencies.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/dep/dependencies.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_1.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_1.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/70.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/70.jar" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$1.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$1.dex" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.dex" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$2.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$2.dex" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$3.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$3.dex" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.dex" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.dex" />
@@ -58,6 +96,9 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.dex" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/popularmovies/troychuinard/com/popularmovies/MainActivity.dex" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/3/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/3/classes.dex" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" />
@@ -66,6 +107,9 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/popularmovies/troychuinard/com/popularmovies/MainActivity.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/buildId.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/buildId.txt" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$2$1.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$2.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$3.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$MyAdapter$ViewHolder.class" />
@@ -73,6 +117,8 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState$1.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity$SavedState.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/3/popularmovies/troychuinard/com/popularmovies/MainActivity.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -150,16 +196,33 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="56" column="77" lean-forward="false" selection-start-line="56" selection-start-column="77" selection-end-line="56" selection-end-column="77" />
+            <state relative-caret-position="243">
+              <caret line="97" column="73" lean-forward="false" selection-start-line="97" selection-start-column="73" selection-end-line="97" selection-end-column="73" />
               <folding>
-                <element signature="e#13459#13460#0" expanded="true" />
-                <element signature="e#13500#13501#0" expanded="true" />
-                <element signature="e#13885#13886#0" expanded="true" />
-                <element signature="e#13942#13943#0" expanded="true" />
-                <element signature="e#14018#14019#0" expanded="true" />
-                <element signature="e#14077#14078#0" expanded="true" />
+                <element signature="e#7879#8756#0" expanded="true" />
+                <element signature="e#8296#8728#0" expanded="true" />
+                <element signature="e#8727#8728#0" expanded="true" />
+                <element signature="e#8755#8756#0" expanded="true" />
+                <element signature="e#13388#13389#0" expanded="true" />
+                <element signature="e#13429#13430#0" expanded="true" />
+                <element signature="e#13814#13815#0" expanded="true" />
+                <element signature="e#13871#13872#0" expanded="true" />
+                <element signature="e#13947#13948#0" expanded="true" />
+                <element signature="e#14006#14007#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -232,12 +295,14 @@
       <find>guide</find>
       <find>trailer</find>
       <find>LiveData</find>
-      <find>onResume</find>
       <find>getPar</find>
       <find>onSaveInstance</find>
       <find>onSaveIn</find>
       <find>KEY</find>
       <find>KEY_REC</find>
+      <find>o</find>
+      <find>onPause</find>
+      <find>onResume</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2290,11 +2355,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/AppExecutors.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/IndividualMovieActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainViewModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="1280" />
     <option name="y" value="-234" />
     <option name="width" value="1920" />
@@ -2640,38 +2706,38 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-234" width="1920" height="1080" extended-state="0" />
+    <frame x="1280" y="-234" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18796591" sideWeight="0.1605691" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2804878" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2804878" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18796591" sideWeight="0.83943087" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32520324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32520324" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2685,17 +2751,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/Model/Video.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-          <folding>
-            <element signature="e#223#224#0" expanded="false" />
-            <element signature="e#253#254#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/play.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -3021,7 +3076,7 @@
         <state relative-caret-position="2325">
           <caret line="171" column="35" lean-forward="false" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="35" />
           <folding>
-            <marker date="1531882855495" expanded="true" signature="10993:10997" ph="{...}" />
+            <marker date="1531915613655" expanded="true" signature="10993:10997" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -3166,17 +3221,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/popularmovies/troychuinard/com/popularmovies/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="56" column="77" lean-forward="false" selection-start-line="56" selection-start-column="77" selection-end-line="56" selection-end-column="77" />
+        <state relative-caret-position="243">
+          <caret line="97" column="73" lean-forward="false" selection-start-line="97" selection-start-column="73" selection-end-line="97" selection-end-column="73" />
           <folding>
-            <element signature="e#13459#13460#0" expanded="true" />
-            <element signature="e#13500#13501#0" expanded="true" />
-            <element signature="e#13885#13886#0" expanded="true" />
-            <element signature="e#13942#13943#0" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14077#14078#0" expanded="true" />
+            <element signature="e#7879#8756#0" expanded="true" />
+            <element signature="e#8296#8728#0" expanded="true" />
+            <element signature="e#8727#8728#0" expanded="true" />
+            <element signature="e#8755#8756#0" expanded="true" />
+            <element signature="e#13388#13389#0" expanded="true" />
+            <element signature="e#13429#13430#0" expanded="true" />
+            <element signature="e#13814#13815#0" expanded="true" />
+            <element signature="e#13871#13872#0" expanded="true" />
+            <element signature="e#13947#13948#0" expanded="true" />
+            <element signature="e#14006#14007#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="popularmovies.troychuinard.com.popularmovies.IndividualMovieActivity" />
+        <activity android:name="popularmovies.troychuinard.com.popularmovies.IndividualMovieActivity" >
+        </activity>
 
         <provider
             android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"

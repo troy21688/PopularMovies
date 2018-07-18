@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -49,18 +50,21 @@ import retrofit2.http.Query;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private RecyclerView mMovieResults;
     private MyAdapter mMovieResultsAdapter;
     private String query;
     private String mBaseURL;
-//    private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
-    private static final String API_KEY = "09b0a9a9d5d9ddee2b3bc69e78b02457";
+    private int lastFirstVisiblePosition;
+    //TODO: NEW How is someone able to load my API Key if I am storing it privately? How will useres of my app obtain my API KEY?
+    private static final String API_KEY = popularmovies.troychuinard.com.popularmovies.BuildConfig.TMD_API_KEY;
 
     private ArrayList<String> mMovieURLS;
     private ArrayList<Movie> mMovies;
     private List<Movie> mMovieResultsList;
 
     private static final String SPINNER_SELECTION = "SPINNER_SELECTION";
+    private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
 
     private boolean mIsFavoriteSelected;
 
@@ -90,38 +94,18 @@ public class MainActivity extends AppCompatActivity {
             Stetho.initializeWithDefaults(this);
             mDb = AppDatabase.getInstance(getApplicationContext());
             mMovieResults = findViewById(R.id.main_recyclerview_image_results);
-            GridLayoutManager glm = new GridLayoutManager(this, 3);
+            int spanCount = calculateNoOfColumns(getApplicationContext());
+            GridLayoutManager glm = new GridLayoutManager(this, spanCount);
             glm.setOrientation(LinearLayoutManager.VERTICAL);
             mMovieResults.setLayoutManager(glm);
             mMovieURLS = new ArrayList<>();
             mMovies = new ArrayList<>();
             mMovieResultsList = new ArrayList<>();
-            mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
-            mMovieResults.setAdapter(mMovieResultsAdapter);
+//            mMovieResults.setAdapter(mMovieResultsAdapter);
             mDb = AppDatabase.getInstance(getApplicationContext());
             mPrefs = getSharedPreferences("prefs", MODE_PRIVATE);
 
             mPrefsEditor = mPrefs.edit();
-            switch (saved_selection){
-                    case 0:
-                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
-                        calltoRetrofit(mBaseURL);
-                        break;
-                    case 1:
-                        mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
-                        calltoRetrofit(mBaseURL);
-                        break;
-                    case 2:
-                        mIsFavoriteSelected = true;
-                        mMovieURLS.clear();
-                        retrieveMovies();
-                        break;
-
-                    default:
-                        mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
-                        break;
-                }
-
 
         } else {
             setContentView(R.layout.activity_no_internet);
@@ -188,7 +172,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(SPINNER_SELECTION, mSpinner.getSelectedItemPosition());
+        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, mMovieResults.getLayoutManager().onSaveInstanceState());
+        //TODO: NEW is it alright to have code prior to the call to super?
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(savedInstanceState != null)
+        {
+            Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
+            mMovieResults.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
+        }
     }
 
 
@@ -216,44 +212,32 @@ public class MainActivity extends AppCompatActivity {
                     Log.v("FAVORITE_URL", photoURL);
                     mMovieURLS.add(photoURL);
                 }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMovieResultsList = movies;
-                        mMovieResultsAdapter.notifyDataSetChanged();
-                    }
-                });
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMovieResultsList = movies;
+                            mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
+                            mMovieResults.setAdapter(mMovieResultsAdapter);
+                            mMovieResultsAdapter.notifyDataSetChanged();
+                        }
+                    });
+
 
             }
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        switch (saved_selection){
-//            case 0:
-//                mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
-//                calltoRetrofit(mBaseURL);
-//                break;
-//            case 1:
-//                mBaseURL = "https://api.themoviedb.org/3/movie/top_rated/";
-//                calltoRetrofit(mBaseURL);
-//                break;
-//            case 2:
-//                mIsFavoriteSelected = true;
-//                mMovieURLS.clear();
-//                retrieveMovies();
-//                break;
-//
-//            default:
-//                mBaseURL = "https://api.themoviedb.org/3/movie/popular/";
-//                break;
-//        }
-//        mSpinner.setSelection(saved_selection);
-    }
+
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        ((LinearLayoutManager) mMovieResults.getLayoutManager()).scrollToPositionWithOffset(lastFirstVisiblePosition,0);
+//    }
 
     private void calltoRetrofit(String mBaseURL) {
+
         mMovieURLS.clear();
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
@@ -284,6 +268,8 @@ public class MainActivity extends AppCompatActivity {
                         String photoURL = "http://image.tmdb.org/t/p/w185" + movie.getPoster_path();
                         mMovieURLS.add(photoURL);
                     }
+                    mMovieResultsAdapter = new MyAdapter(mMovieResultsList);
+                    mMovieResults.setAdapter(mMovieResultsAdapter);
                     mMovieResultsAdapter.notifyDataSetChanged();
                 }
             }
@@ -295,12 +281,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        lastFirstVisiblePosition = ((LinearLayoutManager)mMovieResults.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+//
+//    }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -314,6 +300,7 @@ public class MainActivity extends AppCompatActivity {
                 mResultImage = itemView.findViewById(R.id.movie_poster_image);
             }
         }
+
 
         public MyAdapter(List<Movie> mDataset) {
             mMovieResultsList = mDataset;
@@ -391,6 +378,16 @@ public class MainActivity extends AppCompatActivity {
                 return new SavedState[size];
             }
         };
+    }
+
+    public static int calculateNoOfColumns(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int scalingFactor = 200;
+        int noOfColumns = (int) (dpWidth / scalingFactor);
+        if(noOfColumns < 2)
+            noOfColumns = 2;
+        return noOfColumns;
     }
 
 }

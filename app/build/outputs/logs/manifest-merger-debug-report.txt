@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
 MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2a6192c260caf5972bf94997c239a7e/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/3cd93cd99401be5c19ba3ebac372258e/AndroidManifest.xml:17:1-30:12
 MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:2:1-13:12
@@ -29,20 +29,20 @@ MERGED from [com.android.support:support-media-compat:27.1.1] /Users/troychuinar
 MERGED from [com.android.support:support-compat:27.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/8ba418110e84605263ffbde21c3409f2/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/cbd6e6323b2a616a602212283ba548fc/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/e7f43bac52f4278f5f7920f64723cf3d/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
+INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:3:5-59
 		INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
-		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
+		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
 		INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
-		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-25:12
+		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:1-29:12
 		INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:2:11-69
@@ -55,7 +55,7 @@ ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.x
 	android:name
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:8:5-23:19
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:8:5-27:19
 MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/3cd93cd99401be5c19ba3ebac372258e/AndroidManifest.xml:22:5-28:19
 MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/3cd93cd99401be5c19ba3ebac372258e/AndroidManifest.xml:22:5-28:19
 MERGED from [com.facebook.stetho:stetho:1.5.0] /Users/troychuinard/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/855f061aae69e04051d1865ad57cb8dd/AndroidManifest.xml:11:5-20
@@ -77,23 +77,23 @@ MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/troy
 	android:theme
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:14:9-40
 activity#popularmovies.troychuinard.com.popularmovies.MainActivity
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:15:9-21:20
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:15:9-23:20
 	android:name
 		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:15:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:16:13-20:29
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:17:13-21:29
 action#android.intent.action.MAIN
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:17:17-69
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:18:17-69
 	android:name
-		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:17:25-66
+		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:18:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:19:17-77
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:19:27-74
+		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:20:27-74
 activity#popularmovies.troychuinard.com.popularmovies.IndividualMovieActivity
-ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:22:9-70
+ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:24:9-26:20
 	android:name
-		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:22:19-58
+		ADDED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml:24:19-58
 uses-sdk
 INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/troychuinard/Code/PopularMovies/app/src/main/AndroidManifest.xml
